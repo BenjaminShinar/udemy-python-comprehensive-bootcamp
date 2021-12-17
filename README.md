@@ -2,7 +2,7 @@
 // cSpell:ignore bootcamp
 -->
 
-# Udemy-python-comprehensive-bootcamp
+# Python Comprehensive Bootcamp
 
 Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professional](https://www.udemy.com/course/python-comprehensive-bootcamp-beginner-to-professional/).
 
@@ -14,18 +14,28 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 6. [Python Data Types](Lectures/section_05_08_intro.md#Python-Data-Types)
 7. [Python String Methods and Formatting](Lectures/section_05_08_basics.md#Python-String-Methods-and-Formatting)
 8. [Python Data Structures](Lectures/section_05_08_intro.md#Python-Data-Structures)
-9. [Python Control Flow Statements]
-10. [Python Functions]
+9. [Python Control Flow Statements](Lectures/section_09_10_control.md#Python-Control-Flow-Statements)
+10. [Python Functions](Lectures/section_09_10_control.md#Python-Functions)
 11. [Object Oriented Programming]
 12. [Python Modules and Packages]
 13. [Working with External Filles]
-14. [Working With Dates, Time,Calenders]
-15. [Deploying Web App]
-16. [Building an API from Scratch]
-17. [Create a CRUD App with Python and SQL Server]
-18. [Python and Data Science]
-19. [Python and Machine Learning]
-20. [General Takeaways](README.md#Takeaways)
+14. [Working With Dates, Time, Calenders]
+15. [Working With Images]
+16. [Working With CSV and PDF]
+17. [Errors And Exceptions Handling]
+18. [Creating Basic Python Projects]
+19. [Building Desktop GUI Apps]
+20. [Web Scraping]
+21. [Web Development using Django]
+22. [Building a Web Application with Django]
+23. [Adding Web Project To Version Control]
+24. [Implementing Dynamic Data Display]
+25. [Deploying Web App]
+26. [Building an API from Scratch]
+27. [Create a CRUD App with Python and SQL Server]
+28. [Python and Data Science]
+29. [Python and Machine Learning]
+30. [General Takeaways](README.md#Takeaways)
 
 ## Takeaways
 
@@ -61,13 +71,14 @@ Stuff Worth Remembering.
 | ------- | ------------------------ | ----- | -------------- |
 | Version | `python --version`, `-v` |       | python version |
 
-- Python Shell
+Python Interactive Shell commands:
 
-| Command          | Syntax                           | Flags | Notes                      |
-| ---------------- | -------------------------------- | ----- | -------------------------- |
-| interactive help | `help`,`help()`,`help(<object>)` |       |                            |
-| exit shell       | `exit()`,`quit()`                |       |                            |
-| import file      | `import <file>`                  |       | run the file ,no extension |
+| Command                   | Syntax                           | Flags | Notes                       |
+| ------------------------- | -------------------------------- | ----- | --------------------------- |
+| interactive help          | `help`,`help()`,`help(<object>)` |       |                             |
+| exit shell                | `exit()`,`quit()`                |       |                             |
+| import file               | `import <file>`                  |       | run the file ,no extension  |
+| list objects in workspace | `dir()`                          |       | show all variables declared |
 
 ### Python Operators
 

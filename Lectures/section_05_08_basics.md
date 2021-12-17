@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore
+// cSpell:ignore maxsplit fromkeys
 -->
 
 [main](../README.md)
@@ -171,53 +171,194 @@ print(float('1.6')) #1.6
 
 ## Section 07: Python String Methods and Formatting
 
-<!-- <details> -->
+<details>
 <summary>
-//TODO: add Summary
+Basic string methods
 </summary>
 
-### Python String Methods : Part 1
+strings are text.
 
-### Python String Methods : Part 2
+### Python String Methods
 
-### Python String Formatting : Part 1
+[String methods](https://www.w3schools.com/python/python_strings_methods.asp)
 
-### Python String Formatting : Part 2
+- `len(<str>)` - length of string. counts white space.
+- `.index(<sub str>)` - index of substring. error if doesn't exist.
+  - we can pass the start and end positions as optional
+- `find(<sub str>)` - index of substring, -1 if doesn't exist.
+  - we can pass the start and end positions as optional
+- `.capitalize()` - capitalize the first character, the rest are lower.
+- `.lower()` - return lower case
+- `.upper()` - return upper case
+- `.islower()` - are all characters lower case?
+- `.isupper()` - are all characters upper case?
+- `.count(<sub str>)` - count appearances of sub string
+  - we can pass the start and end positions as optional
+- `.split(<separator>,<maxsplit)` - split text into list of substring,
+  - default separator is white space. we can use _"\n"_ for new line.
+  - we can decide on how many splits to do by passing _maxsplit_ integer, default is _-1_ for all occurrences.
+- `replace(<sub str>,<replacement>)` - replace sub string.
+  - we cana add _count_ parameter to limit how many replacement to do.
+
+we already know we can use indexing to get specific characters in a string, and that the `+` operator does concatenation and the `*` operator repeats the string.
+
+### Python String Formatting
+
+the **f string**. We can have computations inside the string. all the computation happens during runtime.the syntax is `f"text {value} more text"`. when two strings are right next to each other, they are automatically concatenated.
+
+```py
+name = "blue"
+age = 4
+print(f"Hello, {name}. You are {age} years old.")
+x=5
+y=6
+print(f"{x} + {y} is {x+y}")
+```
+
+when we want to use quotes inside our string (like a dictionary key) we need to be careful.
 
 </details>
 
 ## Section 08: Python Data Structures
 
-<!-- <details> -->
+<details>
 <summary>
-//TODO: add Summary
+Basic data types
 </summary>
 
-### What are data structures
+the four basic data structure in python:
+
+- list
+- Tuple
+- Set
+- Dictionary
 
 ### Python List
 
-### Creating a Python List
+a collection data, can be of mixed types. items are ordered by the index, they can be changed and we can mutate the list. we use the square brackets `[]` to create a list, we can then access items by position. we can add and remove elements from a list.
 
-### Accessing elements in a list
+#### Creating a Python List
 
-### Python List Methods: Part 1
+we create a list with either a square brackets or with a list constructor. we can iterate over a list with a for loop. we can also print a list directly.
 
-### Python List Methods: Part 2
+```py
+ls1 = ["1",3,[]]
+ls2 = list(("a",3,[])) #create a list from a tuple
+ls3 =list("abc") #["a","b","c]
 
-### Python Tuple : Part 1
+for x in ls2:
+    print(x)
+```
 
-### Python Tuple : Part 2
+#### Accessing elements in a list
+
+we can access the list elements with the index in the square brackets, remember that we use zero-based indexing. we can use negative index to start from the end of the list. we can also use slicing to access a range of elements inside the list. we can modify the list elements.
+
+```py
+l=[1,2,3,4]
+print(l[0])
+print(l[-1]) #last element
+print(l[1:-1])
+l[0]=7
+print(l)
+```
+
+#### Python List Methods
+
+[List methods](https://www.w3schools.com/python/python_lists_methods.asp)
+
+- `len(<list>)` - length of list (number of items)
+- `del(<list>)` - delete list
+- `append(<element>)` - add item to end of the list.
+- `insert(<index>,<element>)` add elements at a specific index. all the other elements are moved to the next position
+- `.extend(<other list>)` - mutate the list by adding the contents of another list to it.
+- `.remove(<element>)` - remove item by value.
+- `.pop(<index>)` - remove item by index. return the value.
+  - if we don't specify an index, it removes the last element.
+- `.clear()` - mutate the list by removing all items.
+- `.sort(<key>, reverse=bool)`- mutate the list by sorting it.
+  - we can pass a function as the key parameter to control the sorting.
+  - we can sort in reverse by passing a boolean value True to sort in reverse.
+- `.count(<element>)` - count occurrences of element.
+- `index(<element>)` - index of element in list
+
+```py
+def foo(n):
+  return abs(n - 50)
+
+ls = [100, 50, 65, 82, 23]
+ls.sort(key = foo)
+print(ls)
+```
+
+### Python Tuple
+
+A tuple is an immutable list. we can't add or remove elements from it. we can create tuples with the round parentheses `()` or the tuple constructor. we can loop over the tuple with a for loop.
+
+```py
+x= ()
+print(type(x))
+y= tuple([1,2,3])
+print(type(y))
+```
+
+unlike a list, we can't modify the tuple once it's created. however, this is only for the top most elements. if we have nested elements in the deeper portions of the tuple, we can modify them
+
+```py
+tpl = tuple([1,[]])
+#tpl[0]=2 #error
+tpl[1].append(1) #this is legal
+#tpl[1]=[] #also an error
+```
 
 ### Python SET
 
-### Python SET Methods
+A collection (not ordered, not indexed) of unique values. you cannot modify the values inside it. we create a set with curly braces "{}" or the set constructor. a set can contain elements from different types.
+
+we can loop over the set elements.
+
+```py
+fruits = {"grapes","apples","berries"}
+for fruit in fruits:
+    print(fruit)
+```
+
+[Set Methods](https://www.w3schools.com/python/python_sets_methods.asp)
+
+- `.add(<element>)` - add a single element.
+- `.update(<elements>)` - add multiple elements.
+- `.remove(<element>)` - remove element, error if doesn't exist.
+- `.discard(<element>)` - remove element, no error if doesn't exits.
+- `.clear()` - remove all elements.
+- `.union(<other set>)` - create a new set with all the elements from two sets.
+- `.intersection(<other set>)` - create a new set with the shared elements from two sets.
+- `.intersection_update(<other set>)` - keep only the elements shared in the two sets.
+- `.symmetric_difference(<other_set>)` - create a new set with only the elements that aren't shared.
+- `.symmetric_difference_update(<other_set>)` - keep only the elements that aren't shared in both sets.
 
 ### Python Dictionary
 
-### Python Dictionary Methods
+A dictionary is a key-value pair collection. the key must be unique, and it cannot be modified. the values are mutable. we create dictionaries with the curly braces with key value pairs, or use the dictionary constructor. in this cae we don't need quotes around the key name.
 
-### Creating a directory for Python Files
+```py
+car = {
+    "brand": "range rover",
+    "speed": 20
+}
+car2 =dict(key1="value", key2=11)
+```
+
+[Dictionary methods](https://www.w3schools.com/python/python_dictionaries_methods.asp)
+
+- `.items()` - get an iterable for all items.
+- `.keys()` - get all keys.
+- `.values()` - get all values.
+- `.get(<key>,<other value>)` - get element from key, will return `None` if doesn't exists.
+  - we can specify the return value if it doesn't exist.
+- `.update()` - add a key-value pair.
+- `.clear()` - remove all elements
+- `fromkeys(<keys>,<value>)` - create a new dictionary from the keys with those values (or `None` if no value was given).
+- `.copy()` - return a copy of the dictionary.
 
 </details>
 

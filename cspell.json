@@ -3,7 +3,16 @@
   "ignorePaths": [],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": ["mkdir", "Pycharm"],
-  "ignoreWords": ["Udemy"],
+  "words": [
+    "elif",
+    "islower",
+    "isupper",
+    "mkdir",
+    "nonlocal",
+    "Pycharm"
+  ],
+  "ignoreWords": [
+    "Udemy"
+  ],
   "import": []
 }
