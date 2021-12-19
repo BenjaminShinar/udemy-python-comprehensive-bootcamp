@@ -16,7 +16,7 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 8. [Python Data Structures](Lectures/section_05_08_intro.md#Python-Data-Structures)
 9. [Python Control Flow Statements](Lectures/section_09_10_control.md#Python-Control-Flow-Statements)
 10. [Python Functions](Lectures/section_09_10_control.md#Python-Functions)
-11. [Object Oriented Programming]
+11. [Object Oriented Programming](Lectures/section_11_oop.md#Object-Oriented-Programming)
 12. [Python Modules and Packages]
 13. [Working with External Filles]
 14. [Working With Dates, Time, Calenders]
@@ -48,6 +48,8 @@ Stuff Worth Remembering.
 
 - [Python Documentation](https://docs.python.org/3/)
 - [Python reserved keywords](https://www.w3schools.in/python-tutorial/keywords/)
+- `\_\_doc\_\_` to get the doc string
+-
 
 ### Useful Command Line Commands
 

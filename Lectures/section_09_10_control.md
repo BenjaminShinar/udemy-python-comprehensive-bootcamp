@@ -97,7 +97,7 @@ the `range()` function create an iterable, we can pass the start and end element
 
 ## Section 10: Python Functions
 
-<!-- <details> -->
+<details>
 <summary>
 Functions
 </summary>
@@ -218,22 +218,112 @@ x() #8
 
 if we just want to have an empty block of code, like a scaffolding for now. we can write `pass` to appease the interpreter.
 
-### Passing functions as arguments
+### Passing Functions as Arguments
+
+we can pass function as arguments to other functions.
+
+```py
+def foo(b):
+    return b +1
+
+def bar(c):
+    x=7
+    return c(x)
+
+print(bard(foo))
+```
 
 ### VarArgs Parameter
 
+passing an undeterminable number of parameters.
+
+- one asterisk - tuple.
+- two asterisks - dictionary.
+
+python will try to capture the arguments based on their form. after getting the positional arguments, te rest of the arguments will become a tuple or key-value pairs.
+
+```py
+def total_number(a=7,*numbers, **phoneBook):
+    print("My favorite number is " a)
+
+    for num in numbers:
+        print("num", num)
+    for  name,phone_number in phoneBook.items():
+        print(name, phone_number)
+
+total_numbers(7,1,2,3,Jane=2222, John=4444, Angela=5555)
+```
+
 ### Anonymous Functions
+
+lambda,anonymous function, have only a single expression. we donn't need to have a return statement,
+
+```py
+a= lambda b: b+1
+print(a(7))
+```
+
+we can have multiple arguments
+
+```py
+c = lambda x,y,z:x+y+z
+
+print(c(6,7,8))
+```
+
+we can define lambda inside function, and return them from functions.
 
 ### Python DocStrings
 
+document strings, display documentation in the code. we access the docstring with the \_\_doc\_\_. we define it withe using three quote marks.
+
+```py
+def add_numbers(x,y):
+    ''' add ing three values
+
+    param'''
+    return x+y
+
+add_numbers.__doc__
+print(len.__doc__)
+```
+
 ### Python Decorators
 
+decorator allow us to add new functionality to existing objects (functions,method and classes). we use the `@` symbol and then the name of the decorator.
+
+we can do this manually. like this:
+
+```py
+def my_decorator(function):
+    def wrapper():
+        foo = function()
+        convert_uppercase=foo.upper()
+        return convert_uppercase
+    return wrapper
+
+def bar():
+    return "bar"
+
+
+decorate = my_decorator(bar
+print(decorate()))
+```
+
+but we can also use the built in decorator, with the `@` symbol
+
+```py
+@my_decorator
+def foo():
+    return "la
+
+print(foo())
+```
+
 ### Python Function Vs Python Method
+
+a method is a function that is attached to some object. but most python libraries are objects, so all python functions are methods, except maybe some only built-in.
 
 </details>
 
 [main](../README.md)
-
-```
-
-```
