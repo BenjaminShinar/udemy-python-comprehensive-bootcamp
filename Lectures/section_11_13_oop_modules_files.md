@@ -6,7 +6,7 @@
 
 ## Section 11: Object Orientated Programming
 
-<!-- <details> -->
+<details>
 <summary>
 Classes and some OOP basics.
 </summary>
@@ -158,16 +158,117 @@ for country in (queen, zara):
     country.language()
 ```
 
-### Encapsulation : Part 1
+### Encapsulation
 
-### Encapsulation : Part 2
+restricting access to methods and members in the class, hiding the internal representation from the outside world.
 
-### Encapsulation : Part 3
+there aren't access modifiers in python, but there are conventions of using an underscore to denote that something is private and shouldn't be used.
 
-### Abstraction : Part 1
+at any case, we shouldn't set members directly, even if python allows us to.
 
-### Abstraction : Part 2
+actually, using a double underscore prefixes the value with the class name. so it's a different name.
+
+```py
+class Car:
+    def __init__(self,speed,color):
+        self.__speed = speed
+        self.color = color
+
+    def set_speed(self,value):
+        self.__speed = value
+
+    def get_speed(self):
+        return self.__speed
+
+ford = Car(60,"black")
+nissan = Car(35,"green")
+toyota = Car(45,"red")
+
+ford.set_speed(65)
+print(nissan.get_speed())
+nissan.__speed = 30 #direct access doesn't work!
+print(nissan.get_speed())
+nissan._Car__speed=75 #this does work!
+print(nissan.get_speed())
+```
+
+### Abstraction
+
+Hiding implementation, show only functionality. abstract classes and methods.
+
+```py
+class Shape:
+    def area(self):
+        pass #empty method
+    def perimeter(self):
+        pass
+
+class Square(Shape):
+    def __init__(self,side):
+        self.side = side
+
+myShape = Shape()
+```
+
+to use real abstraction we need to import a module **abc** and use decorators... this actually allows us to use abstraction. we simply inherit from the **ABC** class and decorate our methods.
+
+```py
+from abc import ABC, abstractmethod
+
+class AbstractShape(ABC):
+    @abstractmethod
+    def area(self):
+        pass #empty method
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+class Square(AbstractShape):
+    def __init__(self,side):
+        self.side = side
+
+myShape = AbstractShape()
+```
+
+this forces us to provide implementations in the sub classes.
+
+```py
+class Square(AbstractShape):
+    def __init__(self,side):
+        self.side = side
+    def area(self):
+        return self.side **2
+    def perimeter(self):
+        return self.side *4
+
+mySquare = Square(5)
+print(mySquare.area,mySquare.perimeter)
+```
 
 </details>
+
+## Section 12: Modules and Packages
+
+<!-- <details> -->
+<summary>
+//TODO: add Summary
+</summary>
+
+### What are Modules
+
+### How to use Modules
+
+### Built-in Modules
+
+### What are Python Packages
+
+### Python dir function
+
+### Pycache directory
+
+### Python name attribute
+
+<details>
 
 [main](../README.md)

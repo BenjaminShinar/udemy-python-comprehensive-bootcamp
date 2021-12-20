@@ -16,8 +16,8 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 8. [Python Data Structures](Lectures/section_05_08_intro.md#Python-Data-Structures)
 9. [Python Control Flow Statements](Lectures/section_09_10_control.md#Python-Control-Flow-Statements)
 10. [Python Functions](Lectures/section_09_10_control.md#Python-Functions)
-11. [Object Oriented Programming](Lectures/section_11_oop.md#Object-Oriented-Programming)
-12. [Python Modules and Packages]
+11. [Object Oriented Programming](Lectures/section_11_13_oop_modules_files.md#Object-Oriented-Programming)
+12. [Modules and Packages](Lectures/section_11_13_oop_modules_files.md#Modules-and_Packages)
 13. [Working with External Filles]
 14. [Working With Dates, Time, Calenders]
 15. [Working With Images]
