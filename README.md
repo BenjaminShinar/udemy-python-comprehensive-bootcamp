@@ -18,7 +18,7 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 10. [Python Functions](Lectures/section_09_10_control.md#Python-Functions)
 11. [Object Oriented Programming](Lectures/section_11_13_oop_modules_files.md#Object-Oriented-Programming)
 12. [Modules and Packages](Lectures/section_11_13_oop_modules_files.md#Modules-and_Packages)
-13. [Working with External Filles]
+13. [Working with External Filles](Lectures/section_11_13_oop_modules_files.md#Working-With-External-Files)
 14. [Working With Dates, Time, Calenders]
 15. [Working With Images]
 16. [Working With CSV and PDF]
@@ -130,7 +130,12 @@ Python Interactive Shell commands:
 ### Important functions
 
 - `bin()` - return string representation of the binary value of some value.
+- `dir()` - get package stuff
 
 ### Common Pitfalls
+
+- not using `if __name__ == "__main__":`.
+- having code outside of functions.
+- confusing the amount of underscore.
 
 </details>

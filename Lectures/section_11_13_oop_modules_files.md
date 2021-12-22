@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore
+// cSpell:ignore randint Pycache abstractmethod readline readlines writelines
 -->
 
 [main](../README.md)
@@ -250,25 +250,203 @@ print(mySquare.area,mySquare.perimeter)
 
 ## Section 12: Modules and Packages
 
-<!-- <details> -->
+<details>
 <summary>
-//TODO: add Summary
+Modules and packages
 </summary>
 
 ### What are Modules
 
+modules contain function, types, objects and variables.
+
+we create a file and we start adding things into it.
+
+file1.py
+
+```py
+def say_hello(name):
+    print("hello, " + name)
+
+fruit = {
+    "name":"Grapes",
+    "color":"Green"
+}
+```
+
 ### How to use Modules
+
+we use modules by importing, this is done with _import_ and _from_ keywords. we can import the entire module or specific parts of it. we can use the _as_ keyword to alias the module or the imported object.
+
+file2.py
+
+```py
+import file1
+file1.say_hello("dan")
+```
+
+or
+
+```py
+from file import fruits
+print(fruit["name"])
+```
 
 ### Built-in Modules
 
+python has built-in modules. like the _random_ module for randomness, and _platform_
+
+```py
+import random
+import platform
+x = random.random()
+z = random.randint(0,50)
+
+print(platform.system)
+```
+
 ### What are Python Packages
+
+packages are folders that contain modules and as special file with the name \_\_init\_\_.py. (double underscore,init, double underscore). this files simply tells python that this folder contains a package. packages can be nested inside one another.
+
+we import packages just like modules. they are simply another containing level.
 
 ### Python dir function
 
+the `dir` function lists objects defined inside a module.
+
+```py
+import random
+
+m = dir(random)
+print(m)
+```
+
 ### Pycache directory
+
+Pycache directory contains a compiled code that is cached after creation and is used to speed up execution, it's created and removed automatically.
 
 ### Python name attribute
 
+every module has a name. the name is 'main' in the default case. we can can reference this name as part of the code. this is used to separate script code and library code.
+
+```py
+if __name__ == "__main__":
+    doMain()
+```
+
+when we import code, all the code in that module runs before out code!
+
 <details>
+
+## Working With External Files
+
+<details>
+<summary>
+Using files.
+</summary>
+
+### File Handling
+
+we can get files from users directly with `input`, but we can also interact with files through the `File` object
+
+- `open()` - file name and access mode.
+- `read()`
+- `readline()`
+- `readlines()`
+- `write()`
+- `writelines()`
+- `append()`
+- `close()`
+- `readable()` -is file readable (opened)
+
+access modes:
+
+- "r" - read
+- "r+" - read and write
+- "w" - write, creates the file
+- "w+" - write and read
+- "rb" - binary file (not text)
+- "a" - open for append
+- "t" - text mode
+- "x" - create, error if exists
+
+### Opening and Reading Files
+
+we create an external file to read from
+
+quotes.txt
+
+```txt
+kindness is good
+everyday is a gift
+do good to others
+```
+
+now we can interact with this file, we can use relative or absolute path.
+
+```py
+f= open("quotes.txt","r")
+print(f.readable())
+print(f.read())
+f.close()
+print(f.readable())
+```
+
+we can decide how many characters (bytes) to read from the file by providing it as an argument to the `read` methods.
+`readline()` reads one line (until the null terminator), while `readlines()` reads the file into a list of strings.
+
+we can also loop on a file, which is just like getting the lines
+
+```py
+for l in f:
+    print(l)
+```
+
+### Appending and writing to external files
+
+appending to a file means adding data to it, as opposed to "writing" mode, which overwrites the file and replaces the content.
+
+```py
+f = open ("file.txt","a")
+f.write("some text")
+f.close()
+```
+
+### Accessing file object attributes
+
+```py
+f = open ("file.txt","a")
+print(f.name)  # file.txt
+print(f.mode)  # "a"
+print(f.closed)  # False
+f.close()
+print(f.closed)  # True
+```
+
+### Setting the file pointer
+
+the file pointer is the position in the file, by default it's set to the start of the file. we can use `tell()` and `seek()` to move this file pointer.
+
+```py
+f=open("file.txt"))
+print(f.tell())
+f.read(10)
+print(f.tell())
+f.seek(0)
+f.close()
+```
+
+### Renaming and deleting external files
+
+the **os** module contains functionality to manipulate files. this means copying, moving (rename), deleting, etc...
+
+```py
+import os
+os.rename("quotes.txt","quotes.txt")
+os.remove("any-file.txt")
+os.rmdir("directory")
+```
+
+</details>
 
 [main](../README.md)
