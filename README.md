@@ -19,7 +19,7 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 11. [Object Oriented Programming](Lectures/section_11_13_oop_modules_files.md#Object-Oriented-Programming)
 12. [Modules and Packages](Lectures/section_11_13_oop_modules_files.md#Modules-and_Packages)
 13. [Working with External Filles](Lectures/section_11_13_oop_modules_files.md#Working-With-External-Files)
-14. [Working With Dates, Time, Calenders]
+14. [Working With Dates, Time, Calenders](Lectures/section_14_16_dates_images_csv.md#Working-with-Dates,-Times,-Calendars)
 15. [Working With Images]
 16. [Working With CSV and PDF]
 17. [Errors And Exceptions Handling]
@@ -49,7 +49,8 @@ Stuff Worth Remembering.
 - [Python Documentation](https://docs.python.org/3/)
 - [Python reserved keywords](https://www.w3schools.in/python-tutorial/keywords/)
 - `\_\_doc\_\_` to get the doc string
--
+- the **abc** module fo abstract base class
+- the **datetime** module
 
 ### Useful Command Line Commands
 
@@ -126,6 +127,37 @@ Python Interactive Shell commands:
 | Bitwise Not | `~` | `~7` = -8| Bitwise | | | Because of two Complement
 | Left Shift | `<<` | `4<<2` = 16 | Bitwise | each left shift is like doubling
 | Right Shift | `>>` | `15>>2` = 7 | Bitwise |
+
+### strftime()
+
+the `strftime` method to format datetime objects
+
+| syntax | description                                            | example                 |
+| ------ | ------------------------------------------------------ | ----------------------- |
+| `%a`   | weekday short                                          | "mon"                   |
+| `%A`   | weekday full                                           | "monday"                |
+| `%w`   | week day index - zero based                            | 0                       |
+| `%d`   | day of month                                           | 17                      |
+| `%b`   | month short name                                       | Dec                     |
+| `%B`   | month full name                                        | December                |
+| `%m`   | month number                                           | 12                      |
+| `%y`   | year 2 digits                                          | 19                      |
+| `%Y`   | year 4 digits                                          | 2019                    |
+| `%H`   | hour, 24 hours format (00-23)                          | 19                      |
+| `% `   | hour, 12 hours format (00-12)                          | 07                      |
+| `%p`   | am/pm                                                  | AM                      |
+| `%M`   | minutes(00-59)                                         | 25                      |
+| `%S`   | seconds (00-59)                                        | 57                      |
+| `%f`   | microsecond (000000-999999)                            | 656789                  |
+| `%z`   | UTC offset                                             | +0100                   |
+| `%Z`   | TimeZone                                               | CST                     |
+| `%J`   | day of the year number (001-365)                       | 365                     |
+| `%U`   | week number of the the year, start with sunday (00-53) | 52                      |
+| `%W`   | week number of the the year, start with monday (00-53  | 52                      |
+| `%c`   | local version / format of date and time                | Mon Apr 8 13:05:22 2019 |
+| `%x`   | local version / format of date                         | 04/8/19                 |
+| `%X`   | local version / format of time                         | 14:20:00                |
+| `%%`   | writing the `%` character                              | %                       |
 
 ### Important functions
 
