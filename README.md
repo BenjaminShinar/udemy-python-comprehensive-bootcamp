@@ -20,7 +20,7 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 12. [Modules and Packages](Lectures/section_11_13_oop_modules_files.md#Modules-and_Packages)
 13. [Working with External Filles](Lectures/section_11_13_oop_modules_files.md#Working-With-External-Files)
 14. [Working With Dates, Time, Calenders](Lectures/section_14_16_dates_images_csv.md#Working-with-Dates,-Times,-Calendars)
-15. [Working With Images]
+15. [Working With Images](Lectures/section_14_16_dates_images_csv.md#Section-15:-Working-with-Images)
 16. [Working With CSV and PDF]
 17. [Errors And Exceptions Handling]
 18. [Creating Basic Python Projects]
@@ -51,6 +51,7 @@ Stuff Worth Remembering.
 - `\_\_doc\_\_` to get the doc string
 - the **abc** module fo abstract base class
 - the **datetime** module
+- the **calender** module
 
 ### Useful Command Line Commands
 
