@@ -52,6 +52,7 @@ Stuff Worth Remembering.
 - the **abc** module fo abstract base class
 - the **datetime** module
 - the **calender** module
+- the **PIL** module for images
 
 ### Useful Command Line Commands
 

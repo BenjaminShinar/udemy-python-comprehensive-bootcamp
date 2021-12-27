@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore timedelta formatmonth HTMLCalender itermonthdays monthcalendar
+// cSpell:ignore timedelta formatmonth alender itermonthdays monthcalendar venv infile cymk splitext
 -->
 
 [main](../README.md)
@@ -136,7 +136,7 @@ for day in cal.itermonthdays(2019,4):
     print(day, type(day))
 ```
 
-we can use the locale to get the proper configuration. this doesn't require us to instansiate a calender of our own.
+we can use the locale to get the proper configuration. this doesn't require us to instantiate a calender of our own.
 
 ```py
 import calender
@@ -169,18 +169,103 @@ for month in range(1,13): #[1...12]
 
 ## Section 15: Working with Images
 
+<details>
+<summary>
+Images
+</summary>
+
+**PIL** python image library. **Pillow** is an updated version.
+
+the video suggest using a virtual environment,
+
+```sh
+python -m venv <env name> #create a virtual environment
+source venv/bin/activate #unix
+Scripts/activate #windows
+python -m pip install --upgrade pip
+pip install pillow
+```
+
+### Loading Images
+
+getting information about an image file and showing it (using the default image displaying program)
+
+```py
+from PIL import Image
+
+img = Image.open("file.jpg")
+
+print(img.format) #jpg,bmp,png...
+print(img.mode) #cymk, rgc
+print(img.size) #dimension in pixels
+
+img.show()
+```
+
+### Manipulating Images
+
+we will now do some manipulation on the image
+
+```py
+img = Image.open("file.jpg"). convert('L') #makes it grey scale
+
+img.show()
+img.save("file_gs.jpg")
+img = Image.open("file.jpg")
+newImg = img.resize((450,500))
+print(newImg.size)
+newImg.save("file.png") #save as different format
+newImg.rotate(45).show() # rotate and show the image
+```
+
+### Creating thumbnails
+
+a thumbnail is smaller version of an image, we can create them from the full size images.
+
+```py
+from PIL import Image
+import glob, os
+
+size = 128,128 #tuple
+
+for infile in glob("puppies/*jgp"):
+    file, ext = os.path.splitext(infile) #split extension
+    img =image.open(infile)
+    img.thumbnail(size, Image.ANTIALIAS)
+    img.save(file +".thumbnail","JPEG")
+
+```
+
+anti aliasing means to minimize the distortion when representing a high resolution image at a lower resolution
+
+</details>
+
+## Working with CSV and PDF
+
 <!-- <details> -->
 <summary>
 //TODO: add Summary
 </summary>
 
-### Working with images
+### Working with CSV files
 
-### Loading Images
+### Reading a csv file
 
-### Manipulating Images
+### Writing to a csv file
 
-### Creating thumbnails
+### Working with PDF in Python
+
+### Extracting pdf document information in Python
+
+### How to rotate pages in PDF
+
+### How to merge pdf documents
+
+### How to split pdf document pages
+
+### How to add watermark to a PDF document
+
+### How to encrypt a PDF document
 
 </details>
 
