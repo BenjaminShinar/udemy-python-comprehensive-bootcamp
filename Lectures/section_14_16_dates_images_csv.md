@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore timedelta formatmonth alender itermonthdays monthcalendar venv infile cymk splitext
+// cSpell:ignore timedelta formatmonth alender itermonthdays monthcalendar venv infile cymk splitext pypdf writerow writerows
 -->
 
 [main](../README.md)
@@ -240,32 +240,204 @@ anti aliasing means to minimize the distortion when representing a high resoluti
 
 </details>
 
-## Working with CSV and PDF
+## Section 16: Working with CSV and PDF
 
-<!-- <details> -->
+<details>
 <summary>
-//TODO: add Summary
+CSV and PDF files
 </summary>
 
 ### Working with CSV files
 
+csv - comma separated values, like spreadsheets or other forms of data. we can use excel to save a sheet as a csv file.
+
 ### Reading a csv file
+
+we use the iris dataset. we use the **csv** module and the `csv.reader()` function
+
+```py
+import csv
+
+with open("iris.csv","rt") as file: # read as text, as opposed to read as binary
+    csv_rows = csv.reader(file)
+    for row in csv_rows:
+        print(row)
+
+```
 
 ### Writing to a csv file
 
+writing data to csv files. the example is lacking and it's not clear why there are spaces between lines.
+
+```py
+import csv
+headers = ["month","1958","1959","1960"]
+data = [
+    ["JAN",1,2,3],
+    ["FEB",1,2,3],
+    ["MAR",1,2,3],
+    ["APR",1,2,3],
+    ["MAY",1,2,3],
+    ["JUN",1,2,3],
+    ["JUL",1,2,3],
+    ["AUG",1,2,3],
+    ["SEP",1,2,3],
+    ["OCT",1,2,3],
+    ["NOV",1,2,3],
+    ["DEC",1,2,3],
+]
+
+filename= "years.csv"
+with open(filename, 'w') as work:
+    writer = csv.writer(work)
+    writer.writerow(headers)
+    writer.writerows(data)
+```
+
 ### Working with PDF in Python
+
+pdf stands for **portable document format**, originally created by adobe. we will se **pypdf2** library, which we need to install. again, we use a virtual environment.
+
+```sh
+python -m venv some_name
+some_name\scripts\activate
+pip install pypdf2
+```
 
 ### Extracting pdf document information in Python
 
+we can extract the pdf metadata, such as
+
+- Author
+- Creator
+- Producer
+- Subject
+- Title
+- Number of pages
+
+```py
+from PyPDF2 import PdfFileReader
+
+with open(pdf_path,"rb") as f: #read binary
+    pdf = PdfFileReader(f)
+    information = pdf.getDocumentInfo()
+    number_of_pages = pdf.getNumPages()
+
+txt = f"""
+Information about {pdf_path}
+
+Author: {information.author}
+Creator: {information.creator}
+Producer: {information.producer}
+Subject: {information.subject}
+Title: {information.title}
+Number of pages:{number_of_pages}
+"""
+print(txt)
+```
+
 ### How to rotate pages in PDF
+
+rotating a pdf document, like having scanned documents upside down. we can use python to fix the orientation
+
+```py
+from PyPDF2 import PdfFileReader,PdfFileWriter
+
+def rotate_pages(pdf_path):
+    pdf_writer = PdfFileWriter()
+    pdf_reader = PdfFileReader(pdf_path)
+
+    page_1 = pdf_reader.getPage(0).rotateClockwise(90)
+    pdf_wrier.addPage(page_1)
+    page_2 = pdf_reader.getPage(1).rotateCounterClockwise(90)
+    pdf_writer.addPage(page_2)
+    pdf_writer.addPage(pdf_reader.getPage(2))
+
+    with open("rotated_pages.pdf",wb) as fh:
+        pdf_writer.write(fh)
+
+
+```
 
 ### How to merge pdf documents
 
+we might want to combine pdf files together. we can do this by reading several pdf files and writing them together.
+
+```py
+from PyPDF2 import PdfFileReader,PdfFileWriter
+
+def merge_pdf(paths,output):
+    pdf_writer= PdfFileWriter()
+
+    for path in paths:
+        pdf_reader = PdfFileReader(path)
+        for page in range(pdf_reader.getNumPages()):
+            pdf_writer.addPage(pdf_reader.getPage(page))
+
+    with open(output,"wb") as out:
+        pdf_writer.write(out)
+```
+
 ### How to split pdf document pages
+
+just like "merging", se use the reader and writer objects to split a pdf fie into files containing one page each.
+
+```py
+from PyPDF2 import PdfFileReader,PdfFileWriter
+
+def merge_pdf(path,name_of_split):
+    pdf_reader = PdfFileReader(path)
+
+    for page in range(pdf_reader.getNumPages()):
+        pdf_writer= PdfFileWriter()
+        pdf_writer.addPage(pdf_reader.getPage(page))
+
+        output = f"{name_of_split}_{page}.pdf"
+        with open(output,"wb") as output_pdf:
+            pdf_writer.write(output_pdf)
+
+    with open(output,"wb") as out:
+        pdf_writer.write(out)
+```
 
 ### How to add watermark to a PDF document
 
+we need the watermark as a pdf itself. we can then use the _mergePage()_ method to create a overlay layer of one pdf on top of the other.
+
+```py
+from PyPDF2 import PdfFileReader,PdfFileWriter
+
+def create_watermark(input_pdf,watermark_pdf,output_path):
+    pdf_reader = PdfFileReader(watermark_pdf)
+    watermark_page = pdf_reader.getPage(0)
+    pdf_reader = PdfFileReader(input_pdf)
+    for page in range(pdf_reader.getNumPages()):
+        pdf_writer= PdfFileWriter(output_path)
+        page = pdf_reader.getPage(page)
+        page.mergePage(watermark_page)
+        pdf_writer.addPage(page)
+
+```
+
 ### How to encrypt a PDF document
+
+encrypting a pdf with a password.
+
+```py
+from PyPDF2 import PdfFileReader,PdfFileWriter
+
+def add_encryption(input_pdf,output_pdf,password):
+    pdf_reader = PdfFileReader(input_pdf)
+    pdf_writer= PdfFileWriter()
+
+    for page in range(pdf_reader.getNumPages()):
+        page = pdf_reader.getPage(page)
+        pdf_writer.addPage(page)
+
+    pdf_writer.encrypt(user_pwd=password,owner_pwd=None,use_128bit=True)
+    with open(output_pdf,"wb") as fh:
+        pdf_writer.write(fh)
+```
 
 </details>
 

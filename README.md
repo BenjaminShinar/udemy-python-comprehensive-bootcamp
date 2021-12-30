@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore bootcamp
+// cSpell:ignore bootcamp pypdf
 -->
 
 # Python Comprehensive Bootcamp
@@ -21,9 +21,9 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 13. [Working with External Filles](Lectures/section_11_13_oop_modules_files.md#Working-With-External-Files)
 14. [Working With Dates, Time, Calenders](Lectures/section_14_16_dates_images_csv.md#Working-with-Dates,-Times,-Calendars)
 15. [Working With Images](Lectures/section_14_16_dates_images_csv.md#Section-15:-Working-with-Images)
-16. [Working With CSV and PDF]
-17. [Errors And Exceptions Handling]
-18. [Creating Basic Python Projects]
+16. [Working With CSV and PDF](Lectures/section_14_16_dates_images_csv.md#Section-16:-Working-with-CSV-and-PDF)
+17. [Errors And Exceptions Handling](Lectures/section_17_18_exceptions_projects.md#section-17:-Errors-And-Exceptions-Handling)
+18. [Creating Basic Python Projects](Lectures/section_17_18_exceptions_projects.md#section-17:-Creating-Basic-Python-Projects)
 19. [Building Desktop GUI Apps]
 20. [Web Scraping]
 21. [Web Development using Django]
@@ -53,6 +53,8 @@ Stuff Worth Remembering.
 - the **datetime** module
 - the **calender** module
 - the **PIL** module for images
+- the **csv** module
+- **pypdf** library for pdf files
 
 ### Useful Command Line Commands
 
