@@ -1,0 +1,255 @@
+<!--
+// cSpell:ignore randint fullscreen relx mainloop timedelta
+-->
+
+[main](../README.md)
+
+## Section 17: Errors and Exceptions Handling
+
+<details>
+<summary>
+Exceptions and Errors.
+</summary>
+
+Runtime exceptions (errors), which can break the code:
+
+lets start the python shell
+we have an exception and the handler. like ZeroDivisionError or NameError
+
+```py
+print(7/0)
+Print("upper case!")
+print "syntax error"
+number int("abc"))
+```
+
+| code                     | exception         | handler                                  |
+| ------------------------ | ----------------- | ---------------------------------------- |
+| `7/0`                    | ZeroDivisionError | _division by zero_                       |
+| `Print("Uppercase!)`     | NameError         | _name 'Print' is not defined_            |
+| `print "no parentheses"` | SyntaxError       | _missing parentheses in call to 'print'_ |
+| `int("abc")`             | ValueError        | _invalid literal for int with base 10_   |
+
+### Handling Exceptions
+
+we can handle exception inside our code, usually python handles exception by exiting the program. we can decide the behavior with **try-except-finally** blocks. the _try_ block has the code than can raise an exception, the _except_ blocks handles the errors. _finally_ executes after either the try or the except block executes. the _else_ block executes only if there was no exception thrown.
+
+### Implementing basic exception handling
+
+let's start with a simple example.
+
+```py
+try:
+    print (x)
+except:
+    print("variable not defined")
+else:
+    print("hello")
+finally:
+    print("finished")
+```
+
+another example, this time when we except a specified kind of exception and we create a block for it.
+
+```py
+b = "hello"
+try:
+    print(int(b))
+except ValueError as e:
+    print("value error!",e)
+except:
+    print("other exception!")
+else:
+    print("no error!")
+finally:
+    print("finished")
+
+```
+
+</details>
+
+## Section 18: Creating Basic Python Projects
+
+<details>
+<summary>
+Basic Python example projects
+</summary>
+
+### Number Guessing Game
+
+- the computer generates a number, and the user needs to guess which it is. the program will tell the user if the number is larger or smaller than the target number.
+
+in this simple example we won't handle exceptions
+
+```py
+import random
+
+guesses =[]
+
+targetNumber= random.randint(1,101)
+playerGuess=int(input("guess a number between 1 and 100: "))
+guesses.append(playerGuess)
+
+while playerGuess != targetNumber:
+    if playerGuess> targetNumber:
+        print("too high!")
+    else:
+        print("too low!")
+    playerGuess=int(input("guess a number between 1 and 100: "))
+    guesses.append(playerGuess)
+
+else:
+    #this happens when the while block is false
+    print("your guess was correct!")
+    print("it took you %i guesses! these are your guesses" % len(guesses) )
+    print(guesses)
+```
+
+### Random Number Generator
+
+generating random numbers (with repetitions)
+
+```py
+import random
+
+for i in range(1,27):
+    print(random.randint(1,27))
+
+
+```
+
+### Lottery Number Simulator
+
+a really bad way to do this.
+
+```py
+import random
+
+lottery_numbers=[]
+for i in range(0,6):
+    number = random.randint(1,50)
+    while number in lottery_numbers:
+        number = random.randint(1,50)
+
+    lottery_numbers.append(number)
+
+lottery_numbers.sort()
+print(lottery_numbers)
+
+```
+
+### Creating a Digital Clock
+
+we use the **tkinter** for UI.it has a root with many widgets
+
+```py
+import datetime
+import time
+from tkinter import *
+from tkinter import ttk
+from tkinter import font
+
+def quit(*args):
+    root.destroy() #exit main loop
+
+def clock_time():
+    time=datetime.datetime.now()
+    time =(time.strftime("%H:%M:%S"))
+    txt.set(time)
+    root.after(1000, clock_time)
+
+root = Tk()
+root.attributes("-fullscreen",False)
+root.configure(background="black")
+root.bind("x",quit)
+root.after(1000, clock_time)
+
+fnt= font.Font(family='Helvetica', size=120, weight='bold')
+txt=StringVar()
+lbl = ttk.Label(root, textVariable=txt,font=fnt,foreground='white', background='black')
+lbl.place(relx=0.5,rely=0.5, anchor=CENTER)
+
+root.mainloop()
+```
+
+### Creating a Countdown Timer
+
+we will create another example, this time a count-down app.
+
+```py
+from tkinter import *
+from tkinter import ttk
+from tkinter import font
+
+import datetime
+import time
+
+global endTime
+endTime = datetime.datetime(2023,1,1,0,0)
+
+def quit(*args):
+    root.destroy() #exit main loop
+
+def cant_wait():
+    timeLeft= endTime - datetime.datetime.now()
+    timeLeft=  timeLeft - datetime.timedelta(microseconds=timeLeft.microseconds)
+    txt.set(timeLeft)
+    root.after(1000, cant_wait)
+
+root = Tk()
+root.attributes("-fullscreen",False)
+root.configure(background="black")
+root.bind("x",quit)
+root.after(1000, cant_wait)
+
+fnt= font.Font(family='Helvetica', size=90, weight='bold')
+txt=StringVar()
+lbl = ttk.Label(root, textVariable=txt,font=fnt,foreground='white', background='black')
+lbl.place(relx=0.5,rely=0.5, anchor=CENTER)
+
+root.mainloop()
+
+```
+
+</details>
+
+## Section 19: Building Desktop GUI Apps
+
+<!-- <details> -->
+<summary>
+//TODO: add Summary
+</summary>
+
+### What is tkinter
+
+### Building a calculator : part 1
+
+### Building a calculator : part 2
+
+### Building a calculator : part 3
+
+### Building an MP3 Player: Part 1
+
+### Building an MP3 Player: Part 2
+
+### Building an MP3 Player: Part 3
+
+### Building an MP3 Player: Part 4
+
+### Building an MP3 Player: Part 5
+
+### Loan Calculator: Create file
+
+### Building a loan calculator : part 1
+
+### Building a loan calculator : part 2
+
+### Building a loan calculator : part 3
+
+### Building a loan calculator : part 4
+
+### Building a loan calculator : part 5
+
+</details>
+
+[main](../README.md)

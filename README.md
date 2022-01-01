@@ -22,9 +22,9 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 14. [Working With Dates, Time, Calenders](Lectures/section_14_16_dates_images_csv.md#Working-with-Dates,-Times,-Calendars)
 15. [Working With Images](Lectures/section_14_16_dates_images_csv.md#Section-15:-Working-with-Images)
 16. [Working With CSV and PDF](Lectures/section_14_16_dates_images_csv.md#Section-16:-Working-with-CSV-and-PDF)
-17. [Errors And Exceptions Handling](Lectures/section_17_18_exceptions_projects.md#section-17:-Errors-And-Exceptions-Handling)
-18. [Creating Basic Python Projects](Lectures/section_17_18_exceptions_projects.md#section-17:-Creating-Basic-Python-Projects)
-19. [Building Desktop GUI Apps]
+17. [Errors And Exceptions Handling](Lectures/section_17_19_exceptions_projects_gui.md#section-17:-Errors-And-Exceptions-Handling)
+18. [Creating Basic Python Projects](Lectures/section_17_19_exceptions_projects_gui.md#section-17:-Creating-Basic-Python-Projects)
+19. [Building Desktop GUI Apps](Lectures/section_17_19_exceptions_projects_gui.md#section-17:-Building-Desktop-GUI-Apps)
 20. [Web Scraping]
 21. [Web Development using Django]
 22. [Building a Web Application with Django]
@@ -55,6 +55,8 @@ Stuff Worth Remembering.
 - the **PIL** module for images
 - the **csv** module
 - **pypdf** library for pdf files
+- the **random** module
+- the **tkinter** module for basic user interface
 
 ### Useful Command Line Commands
 
@@ -167,6 +169,8 @@ the `strftime` method to format datetime objects
 
 - `bin()` - return string representation of the binary value of some value.
 - `dir()` - get package stuff
+- `random.randint(low, high)`
+- `range(low, high)`
 
 ### Common Pitfalls
 

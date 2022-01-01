@@ -9,10 +9,9 @@
     "isupper",
     "mkdir",
     "nonlocal",
-    "Pycharm"
+    "Pycharm",
+    "tkinter"
   ],
-  "ignoreWords": [
-    "Udemy"
-  ],
+  "ignoreWords": ["Udemy"],
   "import": []
 }
