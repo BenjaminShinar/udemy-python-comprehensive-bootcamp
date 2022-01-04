@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore bootcamp pypdf
+// cSpell:ignore bootcamp pypdf randint
 -->
 
 # Python Comprehensive Bootcamp
@@ -23,8 +23,8 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 15. [Working With Images](Lectures/section_14_16_dates_images_csv.md#Section-15:-Working-with-Images)
 16. [Working With CSV and PDF](Lectures/section_14_16_dates_images_csv.md#Section-16:-Working-with-CSV-and-PDF)
 17. [Errors And Exceptions Handling](Lectures/section_17_19_exceptions_projects_gui.md#section-17:-Errors-And-Exceptions-Handling)
-18. [Creating Basic Python Projects](Lectures/section_17_19_exceptions_projects_gui.md#section-17:-Creating-Basic-Python-Projects)
-19. [Building Desktop GUI Apps](Lectures/section_17_19_exceptions_projects_gui.md#section-17:-Building-Desktop-GUI-Apps)
+18. [Creating Basic Python Projects](Lectures/section_17_19_exceptions_projects_gui.md#section-18:-Creating-Basic-Python-Projects)
+19. [Building Desktop GUI Apps](Lectures/section_17_19_exceptions_projects_gui.md#section-19:-Building-Desktop-GUI-Apps)
 20. [Web Scraping]
 21. [Web Development using Django]
 22. [Building a Web Application with Django]

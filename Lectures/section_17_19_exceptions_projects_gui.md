@@ -222,21 +222,30 @@ root.mainloop()
 
 ### What is tkinter
 
-### Building a calculator : part 1
+tkinter allows us to create GUI applications, it's a cross platform and works with the Tk GUI toolkit (also available it most OS).
+we check to see if it's installed from the shell, if we run this command, we will see a basic gui application.
 
-### Building a calculator : part 2
+```sh
+python -m tkinter
+```
 
-### Building a calculator : part 3
+### Building a Calculator
 
-### Building an MP3 Player: Part 1
+we will now start a project to build a calculator. we use the _frame_ objects as the base class.
 
-### Building an MP3 Player: Part 2
+Entry is a single line widget. we create buttons for the numbers, the mathematical operations and for some other stuff. we have a task (like a future). we have some functions in the class.
 
-### Building an MP3 Player: Part 3
+the driver code creates a Tk objects,
 
-### Building an MP3 Player: Part 4
+```py
+calculator=Tk()
+calculator.title("Calculator")
+app = CalculatorApplication(calculator)
+calculator.resizable(width=False,height=False)
+calculator.mainloop()
+```
 
-### Building an MP3 Player: Part 5
+### Building an MP3 Player
 
 ### Loan Calculator: Create file
 
