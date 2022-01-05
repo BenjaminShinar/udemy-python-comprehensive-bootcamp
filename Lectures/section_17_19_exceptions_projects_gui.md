@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore randint fullscreen relx mainloop timedelta
+// cSpell:ignore randint fullscreen relx mainloop timedelta Pygame Filedialog
 -->
 
 [main](../README.md)
@@ -246,6 +246,16 @@ calculator.mainloop()
 ```
 
 ### Building an MP3 Player
+
+for the next project we will use the **Pygame** module, with the **Tkinter** module and the **filedialog** object.
+
+we first install pygame, we should do this within our virtual environment.
+
+```sh
+pip install pygame
+```
+
+we also make use of the _geometry_ method for tkinter objects to set the size of the application.
 
 ### Loan Calculator: Create file
 

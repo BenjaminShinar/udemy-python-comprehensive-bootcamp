@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore bootcamp pypdf randint
+// cSpell:ignore bootcamp pypdf randint pygame venv chdir
 -->
 
 # Python Comprehensive Bootcamp
@@ -57,6 +57,8 @@ Stuff Worth Remembering.
 - **pypdf** library for pdf files
 - the **random** module
 - the **tkinter** module for basic user interface
+- the **pygame** module for sound
+- the **os** package for system stuff- _chdir_
 
 ### Useful Command Line Commands
 
@@ -76,9 +78,10 @@ Stuff Worth Remembering.
 
 - [Python CLI Commands](https://docs.python.org/3/using/cmdline.html)
 
-| Command | Syntax                   | Flags | Notes          |
-| ------- | ------------------------ | ----- | -------------- |
-| Version | `python --version`, `-v` |       | python version |
+| Command             | Syntax                      | Flags | Notes                     |
+| ------------------- | --------------------------- | ----- | ------------------------- |
+| Version             | `python --version`, `-v`    |       | python version            |
+| Virtual environment | `python -m venv <evn_name>` |       | start virtual environment |
 
 Python Interactive Shell commands:
 
