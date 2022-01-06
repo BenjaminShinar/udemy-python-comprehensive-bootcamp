@@ -174,6 +174,7 @@ the `strftime` method to format datetime objects
 - `dir()` - get package stuff
 - `random.randint(low, high)`
 - `range(low, high)`
+- the `__init__` function for the constructor of classes.
 
 ### Common Pitfalls
 

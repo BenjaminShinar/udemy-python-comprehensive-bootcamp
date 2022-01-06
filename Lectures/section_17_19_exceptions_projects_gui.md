@@ -215,9 +215,9 @@ root.mainloop()
 
 ## Section 19: Building Desktop GUI Apps
 
-<!-- <details> -->
+<details>
 <summary>
-//TODO: add Summary
+Some project using Tkinter again
 </summary>
 
 ### What is tkinter
@@ -257,18 +257,16 @@ pip install pygame
 
 we also make use of the _geometry_ method for tkinter objects to set the size of the application.
 
-### Loan Calculator: Create file
+### Building a Loan Calculator
 
-### Building a loan calculator : part 1
+another tkinter projects, once again with a class.
 
-### Building a loan calculator : part 2
-
-### Building a loan calculator : part 3
-
-### Building a loan calculator : part 4
-
-### Building a loan calculator : part 5
-
+- Label Widget
+- input objects
+- the sticky argument has four possible values: N/S/E/W - _north, south, east,west_. it determines where the label appears inside the frame.
+- Entry widget to get user input
+- StringVar allows us to have a text that changes over time
+- Action Buttons - compute and clear
 </details>
 
 [main](../README.md)
