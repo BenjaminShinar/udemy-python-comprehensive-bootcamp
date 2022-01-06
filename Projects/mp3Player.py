@@ -9,7 +9,7 @@ import os
 def getFiles():
     musicFilesDirectory = askdirectory()
     os.chdir(musicFilesDirectory)  # change dir to path
-    return os.listdir()
+    return [f for f in os.listdir() if f.endswith(".mp3")]
 
 
 def makeButton(txt, action) -> tkr.Button:
@@ -24,9 +24,9 @@ def makeButton(txt, action) -> tkr.Button:
 
 
 if __name__ == "__main__":
-    musicPlayer = tkr.tk()
+    musicPlayer = tkr.Tk()
     musicPlayer.title("Music Player")
-    musicPlayer.geometry("450 X 350")
+    musicPlayer.geometry("450x350")  #no spaces
 
     songlist = getFiles()
 
@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
     def play():
         pygame.mixer.music.load(playList.get(tkr.ACTIVE))
-        var.set(playList.get(tkr.ACTIVE))
+        songTitle.set(playList.get(tkr.ACTIVE))
         pygame.mixer.music.play()
 
     def pause():
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     songTitle = tkr.StringVar()
     currentSongDisplay = tkr.Label(musicPlayer,
                                    font="Helvetica 16 bold",
-                                   text=songTitle)
+                                   textvariable=songTitle)
 
     currentSongDisplay.pack()
     buttonPlay.pack(fill="x")
