@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore bootcamp pypdf randint pygame venv chdir
+// cSpell:ignore bootcamp pypdf randint pygame venv chdir scrapy timedelta abstractmethod beautifulsoup4 urllib
 -->
 
 # Python Comprehensive Bootcamp
@@ -25,9 +25,9 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 17. [Errors And Exceptions Handling](Lectures/section_17_19_exceptions_projects_gui.md#section-17:-Errors-And-Exceptions-Handling)
 18. [Creating Basic Python Projects](Lectures/section_17_19_exceptions_projects_gui.md#section-18:-Creating-Basic-Python-Projects)
 19. [Building Desktop GUI Apps](Lectures/section_17_19_exceptions_projects_gui.md#section-19:-Building-Desktop-GUI-Apps)
-20. [Web Scraping]
-21. [Web Development using Django]
-22. [Building a Web Application with Django]
+20. [Web Scraping](Lectures/section_20_22_web_scraping_django.md#section-20:-Web-Scraping)
+21. [Web Development using Django](Lectures/section_20_22_web_scraping_django.md#section-21:-Django-Basics)
+22. [Building a Web Application with Django](Lectures/section_20_22_web_scraping_django.md#Section-22:-Building-a-Web-App-with-Django)
 23. [Adding Web Project To Version Control]
 24. [Implementing Dynamic Data Display]
 25. [Deploying Web App]
@@ -49,18 +49,37 @@ Stuff Worth Remembering.
 - [Python Documentation](https://docs.python.org/3/)
 - [Python reserved keywords](https://www.w3schools.in/python-tutorial/keywords/)
 - `\_\_doc\_\_` to get the doc string
-- the **abc** module fo abstract base class
-- the **datetime** module
-- the **calender** module
-- the **PIL** module for images
-- the **csv** module
-- **pypdf** library for pdf files
-- the **random** module
-- the **tkinter** module for basic user interface
-- the **pygame** module for sound
-- the **os** package for system stuff- _chdir_
+- `python -m pip install --upgrade pip`
 
-### Useful Command Line Commands
+<!-- <details> -->
+<summary>
+Packages
+</summary>
+
+| python package       | Usage                                   | documentation                                          | install command                           | notable stuff                  |
+| -------------------- | --------------------------------------- | ------------------------------------------------------ | ----------------------------------------- | ------------------------------ |
+| os                   | operating system                        | https://docs.python.org/3/library/os.html              | pre installed                             | `chdir`\_                      |
+| datetime             | dates and time                          | https://docs.python.org/3/library/datetime.html        | pre installed                             | timedelta object, `strftime()` |
+| calendar             | calendar                                | https://docs.python.org/3/library/calendar.html        | pre installed                             |
+| random               | pseudo random numbers                   | https://docs.python.org/3/library/random.html          | pre installed                             | `randint(lo,hi)`               |
+| csv                  | csv files                               | https://docs.python.org/3/library/csv.html             | pre installed                             |
+| tkinter              | basic user interface                    | https://docs.python.org/3/library/tkinter.html         | pre installed                             | `tk()`                         |
+| abc                  | abstract base classes                   | https://docs.python.org/3/library/abc.html             | pre installed                             | `@abstractmethod` annotation   |
+| urllib               | Url handling                            | https://docs.python.org/3/library/urllib.html          | pre installed                             | requests, parsing              |
+| PIL                  | images                                  | https://pillow.readthedocs.io/en/stable/               | `python3 -m pip install --upgrade Pillow` | `Image.open()`                 |
+| pypdf                | pdf files                               | https://pypi.org/project/PyPDF3/                       | `pip install PyPDF3`                      |
+| pygame               | basic games, sound                      | https://www.pygame.org/news                            | `pip install pygame`                      | `pygame.mixer.music`           |
+| scrapy               | web scraping                            | https://scrapy.org/                                    | `pip install Scrapy`                      |
+| beautiful soup (bs4) | data extraction from xml and html files | https://www.crummy.com/software/BeautifulSoup/bs4/doc/ | `pip install beautifulsoup4`              |
+
+</details>
+
+### Command Line Arguments
+
+<details>
+<summary>
+command line arguments
+</summary>
 
 - [Windows commands](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands).
 - [Linux bash commands](https://ss64.com/bash/).
@@ -92,7 +111,14 @@ Python Interactive Shell commands:
 | import file               | `import <file>`                  |       | run the file ,no extension  |
 | list objects in workspace | `dir()`                          |       | show all variables declared |
 
+</details>
+
 ### Python Operators
+
+<details>
+<summary>
+Python Operators
+</summary>
 
 [Operators](https://www.w3schools.com/python/python_operators.asp)
 | Operator | Symbol | Example | Category | Notes |
@@ -137,9 +163,14 @@ Python Interactive Shell commands:
 | Left Shift | `<<` | `4<<2` = 16 | Bitwise | each left shift is like doubling
 | Right Shift | `>>` | `15>>2` = 7 | Bitwise |
 
-### strftime()
+</details>
 
-the `strftime` method to format datetime objects
+### Strftime - Formatting _datetime_ Objects
+
+<details>
+<summary>
+The strftime method to format datetime objects
+</summary>
 
 | syntax | description                                            | example                 |
 | ------ | ------------------------------------------------------ | ----------------------- |
@@ -168,7 +199,14 @@ the `strftime` method to format datetime objects
 | `%X`   | local version / format of time                         | 14:20:00                |
 | `%%`   | writing the `%` character                              | %                       |
 
+</details>
+
 ### Important functions
+
+<details>
+<summary>
+commonly used function
+</summary>
 
 - `bin()` - return string representation of the binary value of some value.
 - `dir()` - get package stuff
@@ -176,10 +214,19 @@ the `strftime` method to format datetime objects
 - `range(low, high)`
 - the `__init__` function for the constructor of classes.
 
+</details>
+
 ### Common Pitfalls
+
+<details>
+<summary>
+Common pitfalls to avoid
+</summary>
 
 - not using `if __name__ == "__main__":`.
 - having code outside of functions.
 - confusing the amount of underscore.
+
+</details>
 
 </details>

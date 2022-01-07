@@ -2,6 +2,7 @@
 // cSpell:ignore timedelta formatmonth alender itermonthdays monthcalendar venv infile cymk splitext pypdf writerow writerows
 -->
 
+[previous](section_11_13_oop_modules_files.md)\
 [main](../README.md)
 
 ## Section 14: Working with Dates, Times, Calendars
@@ -441,4 +442,4 @@ def add_encryption(input_pdf,output_pdf,password):
 
 </details>
 
-[main](../README.md)
+[next](section_17_19_exceptions_projects_gui.md)

@@ -2,6 +2,7 @@
 // cSpell:ignore randint Pycache abstractmethod readline readlines writelines
 -->
 
+[previous](section_09_10_control.md)\
 [main](../README.md)
 
 ## Section 11: Object Orientated Programming
@@ -336,9 +337,9 @@ if __name__ == "__main__":
 
 when we import code, all the code in that module runs before out code!
 
-<details>
+</details>
 
-## Working With External Files
+## Section 13: Working With External Files
 
 <details>
 <summary>
@@ -449,4 +450,4 @@ os.rmdir("directory")
 
 </details>
 
-[main](../README.md)
+[next](section_14_16_dates_images_csv.md)

@@ -2,6 +2,7 @@
 // cSpell:ignore maxsplit fromkeys
 -->
 
+[previous](section_01_04_intro.md)\
 [main](../README.md)
 
 ## Section 05: Python Operators
@@ -362,4 +363,4 @@ car2 =dict(key1="value", key2=11)
 
 </details>
 
-[main](../README.md)
+[next](section_09_10_control.md)

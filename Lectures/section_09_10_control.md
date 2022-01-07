@@ -2,6 +2,7 @@
 // cSpell:ignore
 -->
 
+[previous](section_11_13_oop_modules_files.md)\
 [main](../README.md)
 
 ## Section 09: Python Control Flow Statements
@@ -326,4 +327,4 @@ a method is a function that is attached to some object. but most python librarie
 
 </details>
 
-[main](../README.md)
+[next](section_11_13_oop_modules_files.md)

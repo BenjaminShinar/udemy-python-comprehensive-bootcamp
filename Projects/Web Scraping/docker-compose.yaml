@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  webscraping:
+    build:
+      dockerfile: dockerfile_scrape
+    depends_on:
+      - page
+  page:
+    build:
+      dockerfile: dockerfile_serve
+    ports:
+      - "8080:80"

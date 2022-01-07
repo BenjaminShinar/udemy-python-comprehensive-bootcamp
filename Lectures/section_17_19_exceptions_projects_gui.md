@@ -2,6 +2,7 @@
 // cSpell:ignore randint fullscreen relx mainloop timedelta Pygame Filedialog
 -->
 
+[previous](section_14_16_dates_images_csv.md)\
 [main](../README.md)
 
 ## Section 17: Errors and Exceptions Handling
@@ -269,4 +270,4 @@ another tkinter projects, once again with a class.
 - Action Buttons - compute and clear
 </details>
 
-[main](../README.md)
+[next](section_20_22_web_scraping_django.md)
