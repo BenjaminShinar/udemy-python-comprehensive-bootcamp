@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore scrapy beautifulsoup aquote Virtualenv urlopen urllib startproject middlewares aciobanu runspider pinterest disqus mahalo wsgi runserver stopserver makemigrations sqlmigrate showmigrations startapp actiontasks contenttypes staticfiles createssuperuser
+// cSpell:ignore scrapy beautifulsoup aquote Virtualenv urlopen urllib startproject middlewares aciobanu runspider pinterest disqus mahalo wsgi runserver stopserver makemigrations sqlmigrate showmigrations startapp actiontasks contenttypes staticfiles createssuperuser todolist urlpatterns varchar
 -->
 
 [previous](section_17_19_exceptions_projects_gui.md)\
@@ -312,9 +312,9 @@ a django project is not the same as a django app. an app is a web application th
 
 ## Section 22: Building a Web App with Django
 
-<!-- <details> -->
+<details>
 <summary>
-Creating a Django App
+Creating a Django App - not really operational
 </summary>
 
 We will create a basic 'todo' app that we can add items to it, delete items and mark as completed.
@@ -460,16 +460,112 @@ def index(request):
 
 url stands for **uniform resource locator** django url patterns contains the path of the url and where to send it.
 
+in the "urls.py" file, we match the url patterns from a path to a behavior, we can define a redirect to another url pattern file.
+
+```py
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns= [
+  path('admin/', admin.site.urls),
+  path('',include("todolist.urls"))
+]
+```
+
+now lets create a python file called "urls.py" in the app folder and add stuff there. we define the url pattern to use the logic in the views file.
+
+```py
+from django.urls import path
+from . import view
+
+urlpatterns = [
+  path("", views.index,name="index")
+]
+```
+
 ### Accessing static files
+
+static files are the css and boot strapping files, we can reference them from the html with special syntax
+
+```html
+{% load static %} <!DOCTYPE html>}
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="{% static 'todolist/bs/css/flatly.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'todolist/styles.css' %}" />
+  </head>
+</html>
+```
 
 ### Django Models
 
+models are how data is stored in the database, each object is a row in a table, the model is the source of truth for the folder. each model is a python classes which is derived from **django.db.models.Model**.
+
+```py
+from django.db import models
+
+class Person(models.Model):
+  first_name = models.CharField(max_length=30)
+  last_name = models.CharField(max_length=30)
+```
+
+is equivalent to the sql command to create a table.
+
+```sql
+CCREATE TABLE my_app_person(
+  "id" serial NOT NULL PRIMARY KEY,
+  "first_name" varchar(30) NOT NULL,
+  "last_name" varchar(30) NOT NULL,
+);
+```
+
 ### Creating a Model
+
+a model is a schema for the database, we go to the app directory and the _model.py_ file
+
+```py
+from django.db import models
+
+class Todolist(models.Model):
+  taskDesc = models.CharField(max_length=45)
+  taskCompleted = models.BooleanField(default=False)
+
+  def __str__(self):
+    return self.text
+```
 
 ### Migrating Models
 
+wee add the python classes in the models.py folder to the database.
+
+```sh
+python manage.py makemigrations
+python manage.py migrate #create the table
+```
+
 ### Adding Models to Admin Site
+
+```sh
+python manage.py runserver
+```
+
+log in into the site.
+
+we now register the model, we go the the _admin.py_ file
+
+```py
+from django.contrib import admin
+
+from .models import TodoList
+
+admin.site.register(Todolist)
+```
+
+now we can refresh the site and add the model to the site, we can now create items from the administrative page.
 
 </details>
 
-[next]()
+[next](section_23_25_git_django.md)

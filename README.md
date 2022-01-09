@@ -10,15 +10,15 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 2. [Introduction To Command Line Interface](Lectures/section_01_04_intro.md#Section-02:-Introduction-To-Command-Line-Interface)
 3. [Python Installation and Setup](Lectures/section_01_04_intro.md#Section-03:-Python-Installation-and-Setup)
 4. [Interacting With Python](Lectures/section_01_04_intro.md#Section-04:-Interacting-With-Python)
-5. [Python Operators](Lectures/section_05_08_intro.md#Python-Operators)
-6. [Python Data Types](Lectures/section_05_08_intro.md#Python-Data-Types)
-7. [Python String Methods and Formatting](Lectures/section_05_08_basics.md#Python-String-Methods-and-Formatting)
-8. [Python Data Structures](Lectures/section_05_08_intro.md#Python-Data-Structures)
-9. [Python Control Flow Statements](Lectures/section_09_10_control.md#Python-Control-Flow-Statements)
-10. [Python Functions](Lectures/section_09_10_control.md#Python-Functions)
-11. [Object Oriented Programming](Lectures/section_11_13_oop_modules_files.md#Object-Oriented-Programming)
-12. [Modules and Packages](Lectures/section_11_13_oop_modules_files.md#Modules-and_Packages)
-13. [Working with External Filles](Lectures/section_11_13_oop_modules_files.md#Working-With-External-Files)
+5. [Python Operators](Lectures/section_05_08_intro.md#Section-05:-Python-Operators)
+6. [Python Data Types](Lectures/section_05_08_intro.md#Section-06:-Python-Data-Types)
+7. [Python String Methods and Formatting](Lectures/section_05_08_basics.md#Section-07:-Python-String-Methods-and-Formatting)
+8. [Python Data Structures](Lectures/section_05_08_intro.md#Section-08:-Python-Data-Structures)
+9. [Python Control Flow Statements](Lectures/section_09_10_control.md#Section-09:-Python-Control-Flow-Statements)
+10. [Python Functions](Lectures/section_09_10_control.md#Section-10:-Python-Functions)
+11. [Object Oriented Programming](Lectures/section_11_13_oop_modules_files.md#Section-11:-Object-Oriented-Programming)
+12. [Modules and Packages](Lectures/section_11_13_oop_modules_files.md#Section-12:-Modules-and_Packages)
+13. [Working with External Filles](Lectures/section_11_13_oop_modules_files.md#Section-13:-Working-With-External-Files)
 14. [Working With Dates, Time, Calenders](Lectures/section_14_16_dates_images_csv.md#Working-with-Dates,-Times,-Calendars)
 15. [Working With Images](Lectures/section_14_16_dates_images_csv.md#Section-15:-Working-with-Images)
 16. [Working With CSV and PDF](Lectures/section_14_16_dates_images_csv.md#Section-16:-Working-with-CSV-and-PDF)
@@ -28,7 +28,7 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 20. [Web Scraping](Lectures/section_20_22_web_scraping_django.md#section-20:-Web-Scraping)
 21. [Web Development using Django](Lectures/section_20_22_web_scraping_django.md#section-21:-Django-Basics)
 22. [Building a Web Application with Django](Lectures/section_20_22_web_scraping_django.md#Section-22:-Building-a-Web-App-with-Django)
-23. [Adding Web Project To Version Control]
+23. [Adding Web Project To Version Control](Lectures/section_23_25_git_django.md#Section-23:-Version-Control)
 24. [Implementing Dynamic Data Display]
 25. [Deploying Web App]
 26. [Building an API from Scratch]
@@ -51,7 +51,7 @@ Stuff Worth Remembering.
 - `\_\_doc\_\_` to get the doc string
 - `python -m pip install --upgrade pip`
 
-<!-- <details> -->
+<details>
 <summary>
 Packages
 </summary>
