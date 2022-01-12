@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore pycache todolist endfor describeby urlpatterns
+// cSpell:ignore pycache todolist endfor describeby urlpatterns glyphicon pa_autoconfigure pythonanywhere
 -->
 
 [previous](section_20_22_web_scraping_django.md)\
@@ -105,9 +105,9 @@ git status
 
 ## Section 24: Implementing Dynamic Data Display
 
-<!-- <details> -->
+<details>
 <summary>
-//TODO: add Summary
+Creating views, paths and templates
 </summary>
 
 Back to the django application
@@ -169,6 +169,29 @@ we start with a hard coded form
     </div>
   </div>
 </form>
+```
+
+(also this, for later)
+
+```html
+<div class="row t10">
+  <div class="col-lg-12">
+    <div class="btn-toolbar">
+      <div class="btn-group">
+        <button type="button" class="btn btn-warning">
+          <i class="glyphicon glyphicon-trash"></i>
+          DELETE COMPLETED
+        </button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger">
+          <i class="glyphicon glyphicon-trash"></i>
+          DELETE ALL
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 ```
 
 we create a python files forms.py
@@ -260,12 +283,167 @@ def addTodoItem(request):
     return redirect('index') #send to the index page
 ```
 
-### Creating a view for completed items
+### Creating a View for Completed Items
 
-### Creating a view to delete all completed items
+```py
+from  django.shortcuts import render,redirect
+from .models import TodoList
+from .forms import TodoListFrom
+from django.views.decorators.http import require_POST
 
-### Creating a view to remove all items from database
+def index(request):
+    todo_items = TodoList.objects.order_by(id) #from the app database
+    form = TodoListForm()
+    context = {'todo_items':todo_Items, 'form':form}
+    return render(request, 'todolist/index.html',context)
 
-### Pushing updates to version control
+@require_POST
+def addTodoItem(request):
+    form = TodoListForm(request.POST)
+    # print(request.POST['text']) #log to console
+    if form.is_valid():
+        new_todo = TodoList(text=request.POST['text'])
+        new_todo.save()
+    return redirect('index') #send to the index page
+
+def completedTodo(request, todo_id):
+    todo= TodoList.object.get(pk=todo_id) #get item by primary ket
+    todo.completed = True
+    todo.save()
+
+    return redirect('index')
+```
+
+we also need to add an url path
+
+```py
+from .django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', view.index, name='index'),
+    path('add', view.addTodoItem, name='add'),
+    path('completed/<todo_id>',views.completedTodo, name= 'completed')
+]
+```
+
+and now update the html (the template)
+
+```html
+<ul class="list-group t20">
+  {% for todoItem in todo_items &} {% if todoItem.completed %}
+  <li class="list-group-item todo-completed">{{todoItem.text}}</li>
+  {% else %}
+  <a href="{% url 'completed' todoItem.id %}"
+    ><li class="list-group-item">{{todoItem.text}}</li>
+  </a>
+  {% endif %} {% endfor %}
+</ul>
+```
+
+### Deleting Items
+
+deleting all items and all completed items.
+
+```py
+from  django.shortcuts import render,redirect
+from .models import TodoList
+from .forms import TodoListFrom
+from django.views.decorators.http import require_POST
+
+def index(request):
+    todo_items = TodoList.objects.order_by(id) #from the app database
+    form = TodoListForm()
+    context = {'todo_items':todo_Items, 'form':form}
+    return render(request, 'todolist/index.html',context)
+
+@require_POST
+def addTodoItem(request):
+    form = TodoListForm(request.POST)
+    # print(request.POST['text']) #log to console
+    if form.is_valid():
+        new_todo = TodoList(text=request.POST['text'])
+        new_todo.save()
+    return redirect('index') #send to the index page
+
+def completedTodo(request, todo_id):
+    todo= TodoList.object.get(pk=todo_id) #get item by primary ket
+    todo.completed = True
+    todo.save()
+
+    return redirect('index')
+
+def deleteAll(request):
+    Todolist.objects.all().delete()
+    return redirect('index')
+
+def deleteCompleted(request):
+    Todolist.objects.filter(completed__exact=True).delete()
+    return redirect('index')
+```
+
+update the url paths
+
+```py
+from .django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', view.index, name='index'),
+    path('add', view.addTodoItem, name='add'),
+    path('completed/<todo_id>',views.completedTodo, name= 'completed'),
+    path('deleteAll', view.deleteAll, name='deleteAll'),
+    path('deleteCompleted',views.deleteCompleted, name='deleteCompleted'),
+]
+```
+
+and the template
+
+```html
+<div class="row t10">
+  <div class="col-lg-12">
+    <div class="btn-toolbar">
+      <div class="btn-group">
+        <a href="{% url 'deleteCompleted' %}">
+          <button type="button" class="btn btn-warning">
+            <i class="glyphicon glyphicon-trash"></i>
+            DELETE COMPLETED
+          </button>
+        </a>
+      </div>
+      <div class="btn-group">
+        <a href="{% url 'deleteAll' %}">
+          <button type="button" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+            DELETE ALL
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+```
 
 </details>
+
+## Deploying Web App
+
+<details>
+<summary>
+Getting the webpage to the internet
+</summary>
+
+using a platform called [pythonAnyWhere](www.pythonAnyWhere.com)
+
+go to the website, register, etc...
+
+we also make an api token, using the pa_autoconfigure tool to deploy from github. it has a cli tool that can do the configurations by itself.
+
+```sh
+pip install --user pythonanywhere
+pa_autoconfigure-django.py https://github.com/user/repo
+```
+
+</details>
+
+[next](section_26_27_api_crud)

@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore bootcamp pypdf randint pygame venv chdir scrapy timedelta abstractmethod beautifulsoup4 urllib
+// cSpell:ignore bootcamp pypdf randint pygame venv chdir scrapy timedelta abstractmethod beautifulsoup4 urllib psycopg2 Posgre
 -->
 
 # Python Comprehensive Bootcamp
@@ -29,10 +29,10 @@ Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professio
 21. [Web Development using Django](Lectures/section_20_22_web_scraping_django.md#section-21:-Django-Basics)
 22. [Building a Web Application with Django](Lectures/section_20_22_web_scraping_django.md#Section-22:-Building-a-Web-App-with-Django)
 23. [Adding Web Project To Version Control](Lectures/section_23_25_git_django.md#Section-23:-Version-Control)
-24. [Implementing Dynamic Data Display]
-25. [Deploying Web App]
-26. [Building an API from Scratch]
-27. [Create a CRUD App with Python and SQL Server]
+24. [Implementing Dynamic Data Display](Lectures/section_23_25_git_django.md#Section-24:-Implementing-Dynamic-Data-Display)
+25. [Deploying Web App](Lectures/section_23_25_git_django.md#Section-25:-Deploying-Web-App)
+26. [Building an API from Scratch](Lectures/section_26_27_api_crud.md#section-26:-building-an-api-from-scratch)
+27. [Create a CRUD App with Python and SQL Server](Lectures/section_26_27_api_crud.md#section-27:-creating-a-crud-app)
 28. [Python and Data Science]
 29. [Python and Machine Learning]
 30. [General Takeaways](README.md#Takeaways)
@@ -71,6 +71,8 @@ Packages
 | pygame               | basic games, sound                      | https://www.pygame.org/news                            | `pip install pygame`                      | `pygame.mixer.music`           |
 | scrapy               | web scraping                            | https://scrapy.org/                                    | `pip install Scrapy`                      |
 | beautiful soup (bs4) | data extraction from xml and html files | https://www.crummy.com/software/BeautifulSoup/bs4/doc/ | `pip install beautifulsoup4`              |
+| django               | web development framework               | https://docs.djangoproject.com/en/4.0/                 | `pip install django`                      |                                |
+| psycopg2             | PosgreSQL Database Adapter Connector    | https://www.psycopg.org/                               | `pip install psycopg2`                    |                                |
 
 </details>
 
