@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore pythonanywhere Postgre pypyodbc venv startproject asgi wsgi startapp djangorestframework psycopg2 countriesdb makemigrations sqlmigrate showmigrations serializers runserver createsuperuser name_icontains arser urlpatterns
+// cSpell:ignore pythonanywhere Postgre pypyodbc venv startproject asgi wsgi startapp djangorestframework psycopg2 countriesdb makemigrations sqlmigrate showmigrations serializers runserver createsuperuser name_icontains arser urlpatterns startsalt endsalt puml messagebox textvariable mainloop pady padx columnspan yview yscrollcommand sqlserver
 -->
 
 [previous](section_23_25_git_django.md.md)\
@@ -405,48 +405,171 @@ we can do Get for all objects, get a country by id, update the data with PUT or 
 
 <details>
 <summary>
-//TODO: add Summary
+a simple application that lists records of books and interacts with a database
 </summary>
 
 ### What is CRUD
 
-### What we will create
+CRUD - create, read, update, delete.\
+the four basic operations that we perform on a database. creating records, reading them, updating them and removing them.
 
-### Application design|sketch
+we will have python application that interacts with the database.
 
-### Create Project directory and Python File
+### Application Design and Sketch
 
-### Creating app GUI: Part 1
+a mockup of how the app will look:
 
-### Creating app GUI: Part 2
+- fields for input
+- a button to add
+- listbox area of all the records
+- buttons:
+  - view
+  - clear
+  - exit
+  - modify
+  - delete
 
-### Creating app GUI: Part 3
+```puml
+@startsalt
+title My Books Application
+{
+{
+book title<&book>:|"title"|author:|"author"|isbn:|"isbn"|\t|[add]
+}
+{SI
+   book1
+   book2
+   "\t\t\t\t\t\t\t"
+}
+{
+[view]|[clear]|[exit]|[modify]|[delete]
+}
+}
 
-### Creating app GUI: Part 4
+@endsalt
+```
 
-### Creating app GUI: Part 5
+### Creating app GUI:
 
-### Adding comments to your code
+we start with the gui side of our code. we go back to the Tkinter module with the widgets
 
-### Please Note
+the most basic way to start is to create a Tk object and start running.
+
+```py
+from tkinter import Tk
+
+root = Tk()
+root.mainloop()
+```
+
+next we want to add a title to the application window, add background color and define a set size for it and stop the user from changing the size
+
+```py
+root = Tk()
+root.title("app title!")
+root.configure(background="light green") #bg
+root.geometry("850x500")
+root.resizable(width=False,height=False)
+root.mainloop()
+```
+
+next we want to add the Labels in the correct places according to the grid, add the variables to store user inputs, and add the Entry widgets that the user writes to.
+
+```py
+title_label =ttk.Label(root, text="Title", background="light green", font = ("TKDfaultFont",16))
+title_label.grid(row=0, column=0, sticky=tkinter.W)
+title_text = StringVar()
+title_entry =ttk.Entry(root, width=24, textvariable=title_text)
+title_entry.grid(row=0, column=1,stick=W)
+```
+
+now we add buttons, a list box with a scroll bar and we set them on the window grid.
+
+```py
+#button
+add_btn = Button(root, text="Add Book", bg="blue", fg="white",font="helvetica 10 bold", command="")
+add_btn.grid(row=0, column=6, sticky=W)
+
+#listbox
+list_box = Listbox(root, height=16,width=40,font="helvetica 13",bg="light blue")
+list_box.grid(row=3,column=1,columnspan=14,sticky=W+E, pady=40,padx=15)
+
+scroll_bar = Scrollbar(root)
+scroll_bar.grid(row=1,column=8,rowspan=14, sticky=W)
+list_box.configure(yscrollcommand=scroll_bar.set)
+scroll_bar.configure(command=list_box.yview)
+```
+
+we'll add more buttons now, they still don't have any actions attached to them.
+
+- modify record
+- delete record
+- clear screen
+- exit program
+- view all
 
 ### What is SQL Server
 
-### Minimum Installation Requirements for SQL Server 2019
+SQL-server is a relational database management system by microsoft. it can be run on a dedicated machine or locally.
+
+it uses a special flavour of sql called transactional-sql, or T-SQL
+
+[dockerHub sql](https://hub.docker.com/_/mysql), [dockerHub admirer](https://hub.docker.com/_/adminer)
 
 ### SQL Server Editions
 
-### Download SQL Server Developer Edition
+- enterprise
+- standard
+- web
+- developer
+- express
 
-### Install SQL Server Developer Edition
+SSMS- sql server management studio, an IDE for connecting a working with the sql server.
 
-### Install SSMS
+(i will use the admirer container instead)
 
-### Connecting to SQL Server with SSMS
+**(for the future, i'll need to create the environment variables files:
+MYSQL_ROOT_PASSWORD:
+MYSQL_DATABASE: books
+)**
 
-### Creating a database and table
+### Creating a Database and Table
 
-### Creating a database configuration file
+after we managed to get the sql server running an we are connected to it via the UI, we can create the database and the tables.
+
+we will use the SSMS
+
+```sql
+CREATE DATABASE books_db;
+
+USE books_db;
+-- CREATE TABLE books(id int PRIMARY KEY IDENTITY(1,1),Title VARCHAR(255), Author VARCHAR(255),ISBN int);
+CREATE TABLE books(id int PRIMARY KEY NOT NULL AUTO_INCREMENT ,Title VARCHAR(255), Author VARCHAR(255),ISBN int);
+```
+
+### Creating a Database Configuration File
+
+we want a configuration file to connect to the database.
+
+- driver
+- server
+- database
+- username
+- password
+
+we keep those in a different file, and we import them as a module.
+
+so we create a python file "sqlserver-config.py" (not in repository)
+
+```py
+dbConfig= {
+    'driver': 'SQL Server',
+    'server':'',
+    'Database':'books_db',
+    'username':'root',
+    'password': #update
+}
+```
 
 ### Create a virtual environment and install pypyodbc
 
