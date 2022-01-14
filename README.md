@@ -1,10 +1,12 @@
 <!--
-// cSpell:ignore bootcamp pypdf randint pygame venv chdir scrapy timedelta abstractmethod beautifulsoup4 urllib psycopg2 Posgre
+// cSpell:ignore bootcamp pypdf randint pygame venv chdir scrapy timedelta abstractmethod beautifulsoup4 urllib psycopg2 Posgre repr
 -->
 
 # Python Comprehensive Bootcamp
 
 Repository for Udemy course [Python Comprehensive BootCamp Beginner To Professional](https://www.udemy.com/course/python-comprehensive-bootcamp-beginner-to-professional/).
+
+special note: the django projects didn't work for me most of the time, so the parts about them should be taken with a grain of salt.
 
 1. [Introduction](Lectures/section_01_04_intro.md#Section-01:-Introduction)
 2. [Introduction To Command Line Interface](Lectures/section_01_04_intro.md#Section-02:-Introduction-To-Command-Line-Interface)
@@ -215,6 +217,8 @@ commonly used function
 - `random.randint(low, high)`
 - `range(low, high)`
 - the `__init__` function for the constructor of classes.
+- the `__str__` function for string representation of objects. user readable.
+- the `__repr__` function for **unambiguous** string representation. can even be the constructor call.
 
 </details>
 
