@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore pythonanywhere Postgre pypyodbc venv startproject asgi wsgi startapp djangorestframework psycopg2 countriesdb makemigrations sqlmigrate showmigrations serializers runserver createsuperuser name_icontains arser urlpatterns startsalt endsalt puml messagebox textvariable mainloop pady padx columnspan yview yscrollcommand sqlserver
+// cSpell:ignore pythonanywhere Postgre pypyodbc venv startproject asgi wsgi startapp djangorestframework psycopg2 countriesdb makemigrations sqlmigrate showmigrations serializers runserver createsuperuser name_icontains arser urlpatterns startsalt endsalt puml messagebox textvariable mainloop pady padx columnspan yview yscrollcommand sqlserver fetchall showinfo curselction askokcancel
 -->
 
 [previous](section_23_25_git_django.md.md)\
@@ -573,17 +573,150 @@ dbConfig= {
 
 ### Create a virtual environment and install pypyodbc
 
-### Connect python file to database
+we create a virtual environment and install the **pypyodbc** module. this module interacts with databases.
 
-### Create a cursor object
+```sh
+python -m venv venv
+venv\scripts\activate
+python -m pip install pypyodbc
+```
 
-### Create a class and methods
+### Connect Python File to Database
 
-### Add more methods to class
+we first import our configuration file into the python file
+
+```py
+from sql_config import dbConfig
+import pypyodbc as pyo
+
+con = pypyodbc.connect(**dbConfig) #pass all contents as parameters
+print(con)
+```
+
+### Create a Cursor Object
+
+a cursor object is an object that interacts with the sql database and executes commands. we create it from the pypyodbc connection object, with the `.cursor()` method. the cursor is bound to the database connection and the session.
+
+```py
+con = pypyodbc.connect(**dbConfig) #pass all contents as parameters
+print(con)
+cursor = con.cursor()
+```
+
+### Create a Class and Methods
+
+we define a class with a constructor and destructor and other methods (the CRUD operations):
+
+- view
+- insert
+- update
+- delete
+
+```py
+class BooksDb:
+    def __init__(self):
+        self.con = pypyodbc.connect(**dbConfig)
+        self.cursor = con.cursor()
+        print("You have connected to the database")
+        print(con)
+
+    def __del__(self): #destructor
+        self.con.close()
+
+    def view(self):
+        self.cursor.execute("SELECT * FROM books")
+        rows = self.cursor.fetchall()
+        return rows
+
+    def insert(self, title, author, isbn):
+        sql = ("INSERT INTO books(title, author, isbn) VALUES (?,?,?)")
+        values=[title, author, isbn]
+        self.cursor.execute(sql, values)
+        self.con.commit()
+        messagebox.showinfo(title="Books Database", message = "New book added to database")
+
+    def update(self,id, title, author, isbn):
+        sql = ("UPDATE books SET title = ? , author = ?, isbn = ? WHERE id = ?")
+        values=[id,title, author, isbn]
+        self.cursor.execute(sql, values)
+        self.con.commit()
+        messagebox.showinfo(title="Books Database", message = "Book updated")
+
+    def delete(self, id):
+        sql = ("DELETE FROM books WHERE id = ?")
+        values=[id]
+        self.cursor.execute(sql, values)
+        self.con.commit()
+        messagebox.showinfo(title="Books Database", message = "Book deleted")
+```
 
 ### Create function for selected row
 
-### Create more functions
+capturing the selection row event, this will happen outside the class.
+
+```py
+db = BooksDb()
+
+def get_selected_row(event):
+    global selected_tuple # reference a global variable
+    index = list_bx.curselction()[0]
+    selected_tuple = list_bx.get(index)
+    title_entry.delete(0,'end') #clear
+    title_entry.insert('end',selected_tuple[1]) #populate
+    author_entry.delete(0,'end') #clear
+    author_entry.insert('end',selected_tuple[2]) #populate
+    isbn_entry.delete(0,'end') #clear
+    isbn_entry.insert('end',selected_tuple[3]) #populate
+```
+
+### Interacting Function
+
+- view_records
+- add_book
+- delete_records
+- clear_screen
+- update_records
+- on_closing
+
+```py
+def view_records():
+    list_bx.delete(0,'end')
+    for row in db.view():
+        list_bx.insert('end',row)
+
+def add_book():
+    db.insert(title_text.get(), author_text.get(), isbn_text.get())
+    list_bx.delete(0,'end')
+    list_bx.insert('end',(title_text.get(), author_text.get(), isbn_text.get()))
+    title_entry.delete(0,'end')
+    author_entry.delete(0,'end')
+    isbn_entry.delete(0,'end')
+    con.commit()
+
+def delete_records():
+    db.delete(selected_tuple[0])
+    con.commit()
+
+def clear_screen():
+    list_bx.delete(0,'end')
+    title_entry.delete(0,'end')
+    author_entry.delete(0,'end')
+    isbn_entry.delete(0,'end')
+
+def update_records():
+    db.update(selected_tuple[0],title_text.get(), author_text.get(),isbn_text.get())
+    title_entry.delete(0,'end')
+    author_entry.delete(0,'end')
+    isbn_entry.delete(0,'end')
+    con.commit()
+
+def on_closing():
+    dd= db
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        root.destroy()
+        del dd
+
+```
 
 ### Activate button widgets
 
@@ -594,7 +727,3 @@ dbConfig= {
 <details>
 
 [next]()
-
-```
-
-```

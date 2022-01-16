@@ -1,0 +1,13 @@
+FROM python
+
+RUN apt-get update -y
+
+RUN apy-get install tk -y & 
+
+RUN pip install pypyodbc
+
+COPY . /app
+
+CMD [ "app/booksDisplay.py" ]
+
+ENTRYPOINT [ "python" ]

@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore bootcamp pypdf randint pygame venv chdir scrapy timedelta abstractmethod beautifulsoup4 urllib psycopg2 Posgre repr
+// cSpell:ignore bootcamp pypdf randint pygame venv chdir scrapy timedelta abstractmethod beautifulsoup4 urllib psycopg2 Posgre repr pypyodbc
 -->
 
 # Python Comprehensive Bootcamp
@@ -65,7 +65,7 @@ Packages
 | calendar             | calendar                                | https://docs.python.org/3/library/calendar.html        | pre installed                             |
 | random               | pseudo random numbers                   | https://docs.python.org/3/library/random.html          | pre installed                             | `randint(lo,hi)`               |
 | csv                  | csv files                               | https://docs.python.org/3/library/csv.html             | pre installed                             |
-| tkinter              | basic user interface                    | https://docs.python.org/3/library/tkinter.html         | pre installed                             | `tk()`                         |
+| tkinter              | basic user interface                    | https://docs.python.org/3/library/tkinter.html         | pre installed                             | `Tk()`                         |
 | abc                  | abstract base classes                   | https://docs.python.org/3/library/abc.html             | pre installed                             | `@abstractmethod` annotation   |
 | urllib               | Url handling                            | https://docs.python.org/3/library/urllib.html          | pre installed                             | requests, parsing              |
 | PIL                  | images                                  | https://pillow.readthedocs.io/en/stable/               | `python3 -m pip install --upgrade Pillow` | `Image.open()`                 |
@@ -75,6 +75,7 @@ Packages
 | beautiful soup (bs4) | data extraction from xml and html files | https://www.crummy.com/software/BeautifulSoup/bs4/doc/ | `pip install beautifulsoup4`              |
 | django               | web development framework               | https://docs.djangoproject.com/en/4.0/                 | `pip install django`                      |                                |
 | psycopg2             | PosgreSQL Database Adapter Connector    | https://www.psycopg.org/                               | `pip install psycopg2`                    |                                |
+| pypyodbc             | interaction with database               | https://github.com/pypyodbc/pypyodbc                   | `pip install pypyodbc`                    |
 
 </details>
 
@@ -217,6 +218,7 @@ commonly used function
 - `random.randint(low, high)`
 - `range(low, high)`
 - the `__init__` function for the constructor of classes.
+- the `__del__` function for the destructor of classes.
 - the `__str__` function for string representation of objects. user readable.
 - the `__repr__` function for **unambiguous** string representation. can even be the constructor call.
 

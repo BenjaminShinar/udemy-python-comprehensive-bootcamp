@@ -1,7 +1,51 @@
+from glob import glob
 from tkinter import Tk
 #Button, Label, Scrollbar, Listbox, StringVar, Entry, END
 from tkinter import ttk, StringVar
 import tkinter
+from turtle import up
+from sql_config import dbConfig
+#import pypyodbc
+
+
+class BookDB:
+
+    def __init__(self, con):
+        self.con = con
+        self.cursor = con.cursor()
+
+    def __del__(self):  #destructor
+        self.con.close()
+
+    def view(self):
+        self.cursor.execute("SELECT * FROM books")
+        rows = self.cursor.fetchall()
+        return rows
+
+    def insert(self, title, author, isbn):
+        sql = ("INSERT INTO books(title, author, isbn) VALUES (?,?,?)")
+        values = [title, author, isbn]
+        self.cursor.execute(sql, values)
+        self.con.commit()
+        #messagebox.showinfo(title="Books Database", message = "New book added to database")
+
+    def update(self, id, title, author, isbn):
+        sql = (
+            "UPDATE books SET title = ? , author = ?, isbn = ? WHERE id = ?")
+        values = [id, title, author, isbn]
+        self.cursor.execute(sql, values)
+        self.con.commit()
+        #messagebox.showinfo(title="Books Database", message="Book updated")
+
+    def delete(self, id):
+        sql = ("DELETE FROM books WHERE id = ?")
+        values = [id]
+        self.cursor.execute(sql, values)
+        self.con.commit()
+        #messagebox.showinfo(title="Books Database", message="Book deleted")
+
+
+dbBooks = [(11, "bells", "hemingway", 55), (12, "bells2", "heminzgway", 56)]
 
 
 def makeLabel(app, title, r, c, stick):
@@ -56,7 +100,7 @@ def setupListBox(app):
 
     scroll_bar.configure(command=list_box.yview)
 
-    app.elements["list_box"] = list_box
+    app.list_box = list_box
     app.elements["scroll_bar"] = scroll_bar
 
 
@@ -71,21 +115,83 @@ def setup(app):
 
     makeButton(app, "Add Book", 0, 6, "blue", "white", lambda: addBook(app))
 
-    makeButton(app, "View All Books", 15, 1, "red", "white", lambda a: (a))
-    makeButton(app, "Clear", 15, 2, "maroon", "white", lambda: ())
-    makeButton(app, "Exit App", 15, 3, "black", "white", lambda a: (a))
-    makeButton(app, "Modify Book", 15, 4, "purple", "white", lambda a: (a))
-    makeButton(app, "Delete Book", 15, 5, "red", "white", lambda a: (a))
+    makeButton(app, "View All Books", 15, 1, "red", "white",
+               lambda: view_records(app))
+    makeButton(app, "Clear Screen", 15, 2, "maroon", "white",
+               lambda: clear_screen(app))
+    makeButton(app, "Exit App", 15, 3, "black", "white", exit)
+    makeButton(app, "Modify Book", 15, 4, "purple", "white",
+               lambda: update_records(app))
+    makeButton(app, "Delete Book", 15, 5, "red", "white",
+               lambda: delete_records(app))
 
     setupListBox(app)
 
 
-def addBook(app):
-    print(app.elements)
+def get_delete_entry(app, el):
+    """helper function"""
+    v = app.elements[el].get()
+    app.elements[el].delete(0, 'end')
+    return v
+
+
+def get_selected_row(event):
+    app = root
+    global selected_tuple  # reference a global variable
+    index = app.list_box.curselction()[0]
+    selected_tuple = app.list_box.get(index)
+
+    def update(entry, value):
+        entry.delete(0, 'end')
+        entry.insert('end', value)
+
+    update(app.elements["book_title_entry"], selected_tuple[1])
+    update(app.elements["book_author_entry"], selected_tuple[2])
+    update(app.elements["book_isbn_entry"], selected_tuple[3])
+
+
+def delete_records(app):
     pass
+    #db.delete(selected_tuple[0])
+    #con.commit()
+
+
+def addBook(app):
+
+    title = get_delete_entry(app, "book_title_entry")
+    author = get_delete_entry(app, "book_author_entry")
+    isbn = get_delete_entry(app, "book_isbn_entry")
+    dbBooks.append((title, author, isbn))
+    #db.insert(title_text.get(), author_text.get(), isbn_text.get())
+    app.list_box.delete(0, 'end')
+    app.list_box.insert('end', (title, author, isbn))
+    #con.commit()
+
+
+def update_records(app):
+    title = get_delete_entry(app, "book_title_entry")
+    author = get_delete_entry(app, "book_author_entry")
+    isbn = get_delete_entry(app, "book_isbn_entry")
+
+    #db.update(selected_tuple[0], title, author,isbn)
+    #con.commit()
+
+
+def view_records(app):
+    app.list_box.delete(0, 'end')
+    for row in dbBooks:
+        app.list_box.insert('end', row)
+
+
+def clear_screen(app):
+    app.list_box.delete(0, 'end')
+    app.elements["book_title_entry"].delete(0, 'end')
+    app.elements["book_author_entry"].delete(0, 'end')
+    app.elements["book_isbn_entry"].delete(0, 'end')
 
 
 def main():
+    global root
     root = Tk()
     root.title("Books Display")
     root.configure(bg="light green")
@@ -94,6 +200,9 @@ def main():
     root.elements = dict()
 
     setup(root)
+
+    # con = pypyodbc.connect(**dbConfig)  #pass all contents as parameters
+    ##cursor = con.cursor()
 
     root.mainloop()
 
