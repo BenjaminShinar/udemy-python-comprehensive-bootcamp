@@ -2,10 +2,10 @@
 // cSpell:ignore pythonanywhere Postgre pypyodbc venv startproject asgi wsgi startapp djangorestframework psycopg2 countriesdb makemigrations sqlmigrate showmigrations serializers runserver createsuperuser name_icontains arser urlpatterns startsalt endsalt puml messagebox textvariable mainloop pady padx columnspan yview yscrollcommand sqlserver fetchall showinfo curselction askokcancel
 -->
 
-[previous](section_23_25_git_django.md.md)\
+[previous](section_23_25_git_django.md)\
 [main](../README.md)
 
-## Building an Api From Scratch
+## Section 26: Building an Api From Scratch
 
 <details>
 <summary>
@@ -401,11 +401,11 @@ we can do Get for all objects, get a country by id, update the data with PUT or 
 
 </details>
 
-## Creating A Crud App
+## Section 27: Creating A Crud App
 
 <details>
 <summary>
-a simple application that lists records of books and interacts with a database
+a simple application that lists records of books and interacts with a database.
 </summary>
 
 ### What is CRUD
@@ -718,12 +718,31 @@ def on_closing():
 
 ```
 
-### Activate button widgets
+### Activate Button Widgets
 
-### App and database interaction: Part 1
+wiring, connecting the actions to the buttons. we search for the places where we created the button, and we replace the empty string commands with the function.
 
-### App and database interaction: Part 2
+```py
+btn = tkinter.Button(app,
+                        text="btn text",
+                        bg="blue",
+                        fg="white",
+                        font="helvetica 10 bold",
+                        command=action) #replace action with the function
+```
+
+we also need to connect the list box and bind it to the selection method
+
+```py
+list_bx.bind('<<ListboxSelect>>',get_selected_row) #event, function
+```
+
+### App and Database Interaction
+
+interaction between the database and the python program.
+
+**I Couldn't get this to work**
 
 <details>
 
-[next]()
+[next](section_28_29_data_science_machine_learning.md)

@@ -5,12 +5,8 @@ services:
     build:
       dockerfile: ./app_dockerfile
       context: .
-    environment:
-      DISPLAY: LAPTOP-JKTNU2F0:0
-      USER: "$whoami"
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - /c/Users/$USER:/home/$USER:rw
+    depends_on:
+      - db
   db:
     image: mysql
     restart: always
@@ -23,6 +19,8 @@ services:
     restart: always
     ports:
       - 8080:8080
+    depends_on:
+      - db
 
 volumes:
   my-db:

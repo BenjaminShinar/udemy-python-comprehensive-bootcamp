@@ -426,7 +426,7 @@ and the template
 
 </details>
 
-## Deploying Web App
+## Section 25: Deploying Web App
 
 <details>
 <summary>

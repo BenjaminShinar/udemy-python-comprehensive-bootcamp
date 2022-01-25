@@ -35,8 +35,8 @@ special note: the django projects didn't work for me most of the time, so the pa
 25. [Deploying Web App](Lectures/section_23_25_git_django.md#Section-25:-Deploying-Web-App)
 26. [Building an API from Scratch](Lectures/section_26_27_api_crud.md#section-26:-building-an-api-from-scratch)
 27. [Create a CRUD App with Python and SQL Server](Lectures/section_26_27_api_crud.md#section-27:-creating-a-crud-app)
-28. [Python and Data Science]
-29. [Python and Machine Learning]
+28. [Python and Data Science](Lectures/section_28_29_data_science_machine_learning.md#section-28:-data-science)
+29. [Python and Machine Learning](Lectures/section_28_29_data_science_machine_learning.md#section-29:-machine-learning)
 30. [General Takeaways](README.md#Takeaways)
 
 ## Takeaways
@@ -68,6 +68,9 @@ Packages
 | tkinter              | basic user interface                    | https://docs.python.org/3/library/tkinter.html         | pre installed                             | `Tk()`                         |
 | abc                  | abstract base classes                   | https://docs.python.org/3/library/abc.html             | pre installed                             | `@abstractmethod` annotation   |
 | urllib               | Url handling                            | https://docs.python.org/3/library/urllib.html          | pre installed                             | requests, parsing              |
+| Numpy                | data handling                           | https://numpy.org/doc/stable/                          | `pip install numpy`                       |
+| Pandas               | data handling                           | https://pandas.pydata.org/docs/                        | `pip install pandas`                      |
+| Seaborn              | Data Visualization                      | https://seaborn.pydata.org/                            | `pip install seaborn`                     |
 | PIL                  | images                                  | https://pillow.readthedocs.io/en/stable/               | `python3 -m pip install --upgrade Pillow` | `Image.open()`                 |
 | pypdf                | pdf files                               | https://pypi.org/project/PyPDF3/                       | `pip install PyPDF3`                      |
 | pygame               | basic games, sound                      | https://www.pygame.org/news                            | `pip install pygame`                      | `pygame.mixer.music`           |

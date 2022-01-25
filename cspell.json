@@ -10,7 +10,9 @@
     "mkdir",
     "nonlocal",
     "Pycharm",
-    "tkinter"
+    "tkinter",
+    "Numpy",
+    "Seaborn"
   ],
   "ignoreWords": ["Udemy"],
   "import": []

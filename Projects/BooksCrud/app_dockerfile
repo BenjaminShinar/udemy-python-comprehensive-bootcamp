@@ -1,13 +1,22 @@
 FROM python
 
-RUN apt-get update -y
+# install system dependencies
+RUN apt-get update \
+ && apt-get install unixodbc -y \
+ && apt-get install unixodbc-dev -y \
+ && apt-get install freetds-dev -y \
+ && apt-get install freetds-bin -y \
+ && apt-get install tdsodbc -y \
+ && apt-get install --reinstall build-essential -y
 
-RUN apy-get install tk -y & 
+RUN echo "[SQL Server]\n\
+Description = SQL Server Driver\n\
+Driver = /usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so\n\
+Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so" >> /etc/odbcinst.ini
 
-RUN pip install pypyodbc
+RUN pip install pyodbc
+WORKDIR /app
+ADD sql_config.py . 
+ADD books_connect.py .
 
-COPY . /app
-
-CMD [ "app/booksDisplay.py" ]
-
-ENTRYPOINT [ "python" ]
+CMD [ "python","books_connect.py" ]
