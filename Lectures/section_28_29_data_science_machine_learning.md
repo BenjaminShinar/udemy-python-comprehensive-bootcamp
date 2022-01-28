@@ -1,5 +1,5 @@
 <!--
-// cSpell:ignore Kaggle jupyterlab ipynb iloc pyplot isnull neighbourhood countplot barplot
+// cSpell:ignore Kaggle jupyterlab ipynb iloc pyplot isnull neighbourhood countplot barplot sklearn
 -->
 
 [previous](section_26_27_api_crud.md)\
@@ -346,31 +346,127 @@ visualizing the data makes it easier for us to discover trends, which drives fur
 
 ## Section 29: Machine Learning
 
-<!-- <details> -->
+<details>
 <summary>
-Machine Learning in Python
+Machine Learning in Python.
 </summary>
 
 ### What is Machine Learning
 
+Rather than writing the solving algorithm directly, we use machine learning to have the software create the algorithm itself, without explicit coding from the developer.
+
+an algorithm is a list of steps to follow in order to solve a problem.
+
+imagine we have a program to filter junk email from our inbox, we would need to write the program, and then design the rules that determine if the message is a junk or not. to test the program we would feed it some messages, and check if it classified them correctly.
+
+alternately, machine learning can be used to generate the emails classification. we first gather emails, both real and junk emails. we feed them into a machine learning algorithm, which is an off-the-shelve software, not something that we write specifically for this task. the algorithm will create rules how to classify the messages, without us giving it directions. once we have a decent model for the test data (training), we can feed it new data (unclassified emails) and check it's predictions.
+
+the same algorithm can be used to classify emails, pictures and handwriting.
+
+### Where Machine Learning is Used
+
+- recommendation systems (google,youtube, amazon, udemy, netflix)
+- face recognition
+- fraud detection
+- autonomous driving
+- investment
+- digital assistance
+- even playing chess!
+-
+
 ### Machine Learning Frameworks
+
+- [scikit-learn](https://scikit-learn.org/stable/) - free to use, open source python tool for data mining and analysis
+- [TensorFlow](https://www.tensorflow.org/)- also free to use and open source, uses tensors (multi-dimensional arrays)
+- [AWS Machine Learning](https://aws.amazon.com/free/machine-learning/) - cloud service by amazon, provides APIs for various tasks
+- [IBN Watson](https://www.ibm.com/watson) - service by IBM.
 
 ### Machine Learning Vocabulary
 
+- Sample\example - a single element in a dataset, like an observation.
+- Dataset - collection of samples
+- Feature - a characteristic of a sample/observation, like a column. not all features have the same impact on the model.
+- Label - a category for data, or a prediction from a classification algorithm.
+- Supervised Learning - predicting a category (label) or quantity for a give data.
+- Unsupervised Learning - analyzing unlabeled data and finding patterns.
+- Classification / Classifier - a type of supervised machine learning model that makes prediction about categorization of observations.
+- Regression - a type of supervised machine learning model that makes prediction about a quantity of observations.
+- Cluster - unsupervised machine learning model that attempts to group similar observations together.
+- Probability- how likely an event is to occur.
+
 ### Installing Anaconda
 
-### Supervised machine learning
+installing anaconda, a python data science and machine learning platform/package manager.
 
-### Where Machine Learning is used
+we use the anaconda navigator.
 
-### Creating a basic house value estimator
+### Supervised Machine Learning
+
+Supervised machine learning is a type of machine learning where the computer learns to perform a function by looking at labelled training data.
+we train the model by supplying labelled data, and the model is responsible for generating the correct function. after the training phase, we supply unlabelled data and we test the model's prediction on the new data points.
+
+### Creating a Basic House Value Estimator
+
+we will work onn a model to predict house pricing, lets make some unfounded assumptions.\
+$estimated\_price= 50,000+size*92 + bedrooms*10,000$
+
+```py
+def estimate_home_value(size_in_square_feet, number_of_bedrooms):
+    #initial value
+    value = 50000
+    # lets say 92$ for square feet
+    value = value + (size_in_square_feet*92)
+    # assuming 10000$ per bedroom
+    value = value + (number_of_bedrooms *10000)
+    return value
+
+value = estimate_home_value(3800,5)
+print("Estimated value:", value)
+```
 
 ### Using Scikit-Learn
 
+now lets use a machine learning module. we use anaconda to install scikit-learn. we can look at the documentation at the decision tree classification classes.
+
+he example from the documentation using the \*DecisionTreeClassifier\*\* class.
+
+```py
+from sklearn import tree
+X = [[0,0],[1,1]] #observations
+Y = [1,1] #labels
+clf = tree.DecisionTreeClassifier() #object
+clf.fit(X,Y) # fit model
+clf.predict([[2.,2.]]) # predict for new data
+clf.predict_proba([[2.,2.]]) #predict probability
+```
+
 ### Loading a Dataset
 
-### Making Predictions part 1
+lets get a data set, the _iris flower data set_, which has 150 samples from three species of iris flower, with four features: Sepal length, Sepal width, Petal length, Petal width.
 
-### Making Predictions part 2
+this dataset is part of the library.
+
+```py
+from sklearn.datasets import load_iris
+iris = load_iris()
+print(list(iris.target_names))
+```
+
+### Making Predictions
+
+continuing with the iris dataset.
+
+```py
+from sklearn.datasets import load_iris
+from sklearn import tree
+
+iris = load_iris()
+print(list(iris.target_names))
+
+classifier = tree.DecisionTreeClassifier() #get the classifier objects
+classifier.fit(iris.date, iris.target) #create model
+print(classifier.predict([[5.1,3.5,1.4,0.2]])) #providing some features, this is from the first sample of the dataset
+print(classifier.predict_proba([[5.1,3.5,1.4,0.2]]))
+```
 
 </details>

@@ -134,4 +134,4 @@ dmypy.json
 #files
 Projects/BooksCrud/my_sql_env
 Projects/BooksCrud/sql_config.py
-Notebooks/*.csv
+Projects/Notebooks/*.csv
