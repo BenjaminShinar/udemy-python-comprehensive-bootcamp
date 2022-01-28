@@ -743,6 +743,6 @@ interaction between the database and the python program.
 
 **I Couldn't get this to work**
 
-<details>
+</details>
 
 [next](section_28_29_data_science_machine_learning.md)

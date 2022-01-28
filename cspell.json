@@ -4,16 +4,27 @@
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
-    "elif",
-    "islower",
-    "isupper",
     "mkdir",
     "nonlocal",
     "Pycharm",
-    "tkinter",
+    "Tkinter",
     "Numpy",
-    "Seaborn"
+    "Seaborn",
+    "matplotlib",
+    "Scikit"
   ],
-  "ignoreWords": ["Udemy"],
+  "ignoreWords": [
+    "Udemy",
+    "arange",
+    "elif",
+    "iloc",
+    "islower",
+    "isupper",
+    "neighbourhood",
+    "pyplot",
+    "xlabel",
+    "xlim",
+    "ylabel"
+  ],
   "import": []
 }

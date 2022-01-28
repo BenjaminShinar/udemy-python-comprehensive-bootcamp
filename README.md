@@ -70,6 +70,7 @@ Packages
 | urllib               | Url handling                            | https://docs.python.org/3/library/urllib.html          | pre installed                             | requests, parsing              |
 | Numpy                | data handling                           | https://numpy.org/doc/stable/                          | `pip install numpy`                       |
 | Pandas               | data handling                           | https://pandas.pydata.org/docs/                        | `pip install pandas`                      |
+| matplotlib           | Data Visualization                      | https://matplotlib.org/                                |                                           |
 | Seaborn              | Data Visualization                      | https://seaborn.pydata.org/                            | `pip install seaborn`                     |
 | PIL                  | images                                  | https://pillow.readthedocs.io/en/stable/               | `python3 -m pip install --upgrade Pillow` | `Image.open()`                 |
 | pypdf                | pdf files                               | https://pypi.org/project/PyPDF3/                       | `pip install PyPDF3`                      |
